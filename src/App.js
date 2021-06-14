@@ -9,7 +9,7 @@ import AddJobPosting from "./pages/AddJobPosting"
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Container className="main">
         <Navi></Navi>
         <Route exact path="/" component={Dashboard}></Route>

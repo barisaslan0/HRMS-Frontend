@@ -10,7 +10,7 @@ export default function JobPostingList() {
     let jobPostingService = new JobPostingService();
     jobPostingService
       .getJobPostings()
-      .then((result) => setJobPostings(result.data.data));
+      .then(result => setJobPostings(result.data.data));
   }, []);
 
   return (
