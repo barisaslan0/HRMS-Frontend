@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JobPositionService from "../services/jobPositionService";
-import { Dropdown,Header} from "semantic-ui-react";
+import { Dropdown,Header,Button} from "semantic-ui-react";
 
 export default function JobPositions() {
     const [jobPositions, setJobPositions] = useState([]);
@@ -20,6 +20,7 @@ export default function JobPositions() {
         <div>
             <Header textAlign="left">Pozisyon</Header>
             <Dropdown placeholder="Pozisyon Seç" fluid multiple search selection options={jobPositonOptions} />
+            <Button primary>UYGULA</Button>
         </div>
     )
 }

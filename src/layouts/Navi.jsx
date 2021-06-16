@@ -15,6 +15,9 @@ export default function Navi() {
           <Menu.Item as={NavLink} to="/home">
             Ana Sayfa
           </Menu.Item>
+          <Menu.Item as={NavLink} to="/confirmjobposting">
+            Bildirimler
+          </Menu.Item>
 
           <Menu.Menu position="right">
             <Menu.Item>

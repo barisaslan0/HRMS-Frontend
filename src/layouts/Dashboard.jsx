@@ -12,7 +12,6 @@ export default function Dashboard() {
           <Grid.Column stretched width={4}>
             <Cities></Cities>
             <JobPositions></JobPositions>
-            <Button primary>UYGULA</Button>
           </Grid.Column>
           <Grid.Column width={12}>
             <JobPostingList></JobPostingList>
