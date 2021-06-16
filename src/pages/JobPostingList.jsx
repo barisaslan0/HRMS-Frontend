@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JobPostingService from "../services/jobPostingService";
-import { Button, Card, Image ,Header,Icon} from "semantic-ui-react";
+import { Button, Card,Header} from "semantic-ui-react";
 import BusinessIcon from "@material-ui/icons/Business";
 import WorkIcon from '@material-ui/icons/Work';
 import { NavLink } from "react-router-dom";
@@ -30,16 +30,6 @@ export default function JobPostingList() {
               <Card.Meta>{jobPosting.employer.companyName}</Card.Meta>
               <Card.Meta>{jobPosting.city.name}</Card.Meta>
               <Card.Description>{jobPosting.jobDescription}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <div className="ui two buttons">
-                <Button basic color="green">
-                  Approve
-                </Button>
-                <Button basic color="red">
-                  Decline
-                </Button>
-              </div>
             </Card.Content>
           </Card>
         ))}

@@ -10,33 +10,23 @@ export default function Cities() {
     cityService.getCities().then((result) => setCities(result.data.data));
   }, []);
 
-  const cityOptions=cities.map((city)=>({
-    key:city.cityId,
-    text:city.name,
-    value:city.name
-  }))
+  const cityOptions = cities.map((city) => ({
+    key: city.cityId,
+    text: city.name,
+    value: city.name,
+  }));
 
   return (
     <div>
-      {/* <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Şehirler</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {cities.map((city) => (
-            <Table.Row key={city.cityId}>
-              <Table.Cell>{city.name}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table> */}
-
-      <Header textAlign="left">Şehir</Header>
-      <Dropdown placeholder="Şehir Seç" fluid multiple search selection options={cityOptions} />
-
+      <label>Şehir</label>
+      <Dropdown
+        placeholder="Şehir Seç"
+        fluid
+        multiple
+        search
+        selection
+        options={cityOptions}
+      ></Dropdown>
     </div>
   );
 }

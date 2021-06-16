@@ -18,9 +18,8 @@ export default function JobPositions() {
 
     return (
         <div>
-            <Header textAlign="left">Pozisyon</Header>
+            <label>Pozisyon</label>
             <Dropdown placeholder="Pozisyon Seç" fluid multiple search selection options={jobPositonOptions} />
-            <Button primary>UYGULA</Button>
         </div>
     )
 }
