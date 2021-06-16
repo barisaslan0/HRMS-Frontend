@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Button, Card } from "semantic-ui-react";
+import { Button, Card, Header } from "semantic-ui-react";
 import JobPostingService from "../services/jobPostingService";
+import HourglassFullRoundedIcon from "@material-ui/icons/HourglassFullRounded";
+import { NavLink } from "react-router-dom";
 
 export default function ConfirmJobPosting() {
   let jobPostingService = new JobPostingService();
@@ -23,28 +25,35 @@ export default function ConfirmJobPosting() {
 
   return (
     <div>
+      <Header as="h2" icon textAlign="center">
+        <HourglassFullRoundedIcon></HourglassFullRoundedIcon>
+        <Header.Content>ONAY BEKLEYEN İŞ İLANLARI</Header.Content>
+      </Header>
       <Card.Group>
         {jobPostings.map((jobPosting) => (
           <Card fluid>
             <Card.Content>
               <Card.Header>{jobPosting.employer.companyName}</Card.Header>
-              <Card.Meta>Friends of Elliot</Card.Meta>
-              <Card.Description>
-                Steve wants to add you to the group{" "}
-                <strong>best friends</strong>
-              </Card.Description>
+              <Card.Meta>{jobPosting.employer.companyName}</Card.Meta>
+              <Card.Meta>{jobPosting.city.name}</Card.Meta>
+              <Card.Description>{jobPosting.jobDescription}</Card.Description>
             </Card.Content>
             <Card.Content extra>
               <div className="ui two buttons">
                 <Button
                   onClick={(e) => confirm(jobPosting.jobPostingId)}
-                  basic
+                  inverted
                   color="green"
                 >
-                  Onayla
+                  ONAYLA
                 </Button>
-                <Button basic color="red">
-                  Reddet
+                <Button
+                  as={NavLink}
+                  to={`/examinejobposting/${jobPosting.jobPostingId}`}
+                  inverted
+                  color="blue"
+                >
+                  İNCELE
                 </Button>
               </div>
             </Card.Content>

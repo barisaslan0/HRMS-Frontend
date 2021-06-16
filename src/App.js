@@ -7,7 +7,7 @@ import { Route } from "react-router";
 import AddJobPosting from "./pages/AddJobPosting"
 import ConfirmJobPosting from "./pages/ConfirmJobPosting";
 import JobPostingDetail from "./pages/JobPostingDetail";
-
+import ExamineJobPostingDetail from "./pages/ExamineJobPostingDetail";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/jobpostings/add" component={AddJobPosting}></Route>
         <Route exact path="/confirmjobposting" component={ConfirmJobPosting}></Route>
         <Route exact path="/jobpostings/:jobPostingId" component={JobPostingDetail}></Route>
+        <Route exact path="/examinejobposting/:jobPostingId" component={ExamineJobPostingDetail}></Route>
       </Container>
     </div>
   );

@@ -257,7 +257,7 @@ export default function AddJobPosting() {
               ></Form.TextArea>
             </Form.Group>
 
-            <Button type="submit" disabled={!dirty || isSubmitting} primary>
+            <Button handleReset={handleReset} type="submit" disabled={!dirty || isSubmitting} primary>
               YAYINLA
             </Button>
           </Form>
