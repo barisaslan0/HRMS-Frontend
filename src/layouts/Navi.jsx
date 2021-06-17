@@ -7,13 +7,13 @@ export default function Navi() {
   return (
     <div>
       <Menu color="red" inverted fixed="top" size="large">
-        <Container>
-          <Menu.Item>
-            <AssessmentIcon></AssessmentIcon>
-          </Menu.Item>
-          <Menu.Item>HRMS</Menu.Item>
+        <Container className="app">
+          <Menu.Item>BEYAZYAKA.COM</Menu.Item>
           <Menu.Item as={NavLink} to="/home">
             Ana Sayfa
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/jobpostings">
+            İş İlanları
           </Menu.Item>
           <Menu.Item as={NavLink} to="/confirmjobposting">
             Bildirimler
