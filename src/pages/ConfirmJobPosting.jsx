@@ -13,12 +13,12 @@ export default function ConfirmJobPosting() {
   useEffect(() => {
     let jobPostingService = new JobPostingService();
     jobPostingService
-      .getJobPostingsConfirmFalse()
+      .getByConfirmFalse()
       .then((result) => setJobPostings(result.data.data));
   }, []);
 
   const confirm = (jobPostingId) => {
-    jobPostingService.confirmJobPosting(jobPostingId).then(function () {
+    jobPostingService.confirm(jobPostingId).then(function () {
       window.location.reload();
     });
   };
@@ -41,7 +41,7 @@ export default function ConfirmJobPosting() {
             <Card.Content extra>
               <div className="ui two buttons">
                 <Button
-                  onClick={(e) => confirm(jobPosting.jobPostingId)}
+                  onClick={() => confirm(jobPosting.jobPostingId)}
                   inverted
                   color="green"
                 >

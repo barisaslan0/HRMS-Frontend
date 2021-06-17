@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JobPostingService from "../services/jobPostingService";
-import { Button, Card, Header, Icon } from "semantic-ui-react";
+import { Table, Header, Button } from "semantic-ui-react";
 import BusinessIcon from "@material-ui/icons/Business";
 import DetailsIcon from "@material-ui/icons/Details";
 import WorkIcon from "@material-ui/icons/Work";
@@ -22,31 +22,69 @@ export default function JobPostingDetail() {
   return (
     <div className="card">
       <Header as="h2" icon textAlign="center">
-        <DetailsIcon></DetailsIcon>
         <Header.Content>İŞ İLANI DETAYI</Header.Content>
+        <DetailsIcon></DetailsIcon>
       </Header>
       {jobPostings.map((jobPosting) => (
-        <Card fluid>
-          <Card.Content>
-            <Card.Header><BusinessIcon></BusinessIcon> Şirket: {jobPosting.employer.companyName}</Card.Header>
-            <Card.Header>
-            <WorkIcon></WorkIcon> Pozisyon: {jobPosting.jobPosition.positionName}
-            </Card.Header>
-            <Card.Header>
-            <LocationCityIcon></LocationCityIcon> Şehir: {jobPosting.city.name}
-            </Card.Header>
-            <Card.Description>{jobPosting.numberOfOpenPosition}</Card.Description>
-            <Card.Meta>{jobPosting.employer.companyName}</Card.Meta>
-            <Card.Meta>{jobPosting.city.name}</Card.Meta>
-            
-          </Card.Content>
-          <Card.Content extra>    
-              <Button floated="right" inverted color="green">
-                BAŞVUR
-              </Button>
-          </Card.Content>
-        </Card>
+        <Table color="yellow" celled striped>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell colSpan="3">DETAYLAR</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell collapsing>
+                <BusinessIcon /> Şirket
+              </Table.Cell>
+              <Table.Cell>{jobPosting.employer.companyName}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                <WorkIcon /> Pozisyon
+              </Table.Cell>
+              <Table.Cell>{jobPosting.jobPosition.positionName}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                <LocationCityIcon /> Şehir
+              </Table.Cell>
+              <Table.Cell>{jobPosting.city.name}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Açık Pozisyon Sayısı</Table.Cell>
+              <Table.Cell>{jobPosting.numberOfOpenPosition}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Minimum Maaş Skalası</Table.Cell>
+              <Table.Cell>{jobPosting.minSalary} TL</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Maksimum Maaş Skalası</Table.Cell>
+              <Table.Cell>{jobPosting.maxSalary} TL</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Çalışma Türü</Table.Cell>
+              <Table.Cell>{jobPosting.workType.workType}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Çalışma Zamanı</Table.Cell>
+              <Table.Cell>{jobPosting.workTime.workTime}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Son Başvuru Tarihi</Table.Cell>
+              <Table.Cell>{jobPosting.deadline}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Açıklama</Table.Cell>
+              <Table.Cell>{jobPosting.jobDescription}</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
       ))}
+      <Button floated="right" inverted color="green">
+        BAŞVUR
+      </Button>
     </div>
   );
 }

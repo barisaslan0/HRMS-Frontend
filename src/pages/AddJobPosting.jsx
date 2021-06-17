@@ -79,7 +79,7 @@ export default function AddJobPosting() {
       values.employerId = 10;
       console.log(values);
       jobPostingService
-        .addJobPosting(values)
+        .add(values)
         .then((result) => console.log(result.data.data));
     },
   });
@@ -175,7 +175,7 @@ export default function AddJobPosting() {
                 label="Minimum Maaş Skalası"
                 placeholder="Minimum Maaş Skalası"
                 error={
-                  errors.maxSalary && touched.minSalary && errors.maxSalary
+                  errors.minSalary && touched.minSalary && errors.minSalary
                 }
               ></Form.Input>
               <Form.Input
@@ -234,8 +234,7 @@ export default function AddJobPosting() {
                 onBlur={handleBlur}
                 value={values.deadline}
                 fluid
-                label="Bitiş Tarihi"
-                placeholder="Tarih Seçin"
+                label="Son Başvuru Tarihi"
                 error={errors.deadline && touched.deadline && errors.deadline}
               ></Form.Input>
             </Form.Group>
@@ -256,7 +255,6 @@ export default function AddJobPosting() {
                 }
               ></Form.TextArea>
             </Form.Group>
-
             <Button handleReset={handleReset} type="submit" disabled={!dirty || isSubmitting} primary>
               YAYINLA
             </Button>

@@ -11,7 +11,7 @@ export default function JobPostingList() {
   useEffect(() => {
     let jobPostingService = new JobPostingService();
     jobPostingService
-      .getJobPostingsConfirmAndActiveTrue()
+      .getByConfirmAndActiveTrue()
       .then((result) => setJobPostings(result.data.data));
   }, []);
 

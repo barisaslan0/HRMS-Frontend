@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import JobPostingService from "../services/jobPostingService";
 import { Button, Card, Header, Icon } from "semantic-ui-react";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -14,17 +14,19 @@ export default function JobPostingDetail() {
 
   const [jobPostings, setJobPostings] = useState([]);
 
+  const history = useHistory();
+
   useEffect(() => {
     let jobPostingService = new JobPostingService();
     jobPostingService
-      .getByJobPostingId(jobPostingId)
+      .getByJobPostingIdAndConfirmFalse(jobPostingId)
       .then((result) => setJobPostings([result.data.data]));
   }, []);
 
   const confirm = (jobPostingId) => {
-    jobPostingService.confirmJobPosting(jobPostingId).then(function () {
-      window.location.reload();
-    });
+    jobPostingService
+      .confirm(jobPostingId)
+      .then(history.push("/confirmjobposting"));
   };
 
   return (
@@ -37,7 +39,7 @@ export default function JobPostingDetail() {
         <Card fluid>
           <Card.Content>
             <Card.Header>
-              <BusinessIcon></BusinessIcon> Şirket:{" "}
+              <BusinessIcon></BusinessIcon>
               {jobPosting.employer.companyName}
             </Card.Header>
             <Card.Header>
@@ -56,7 +58,7 @@ export default function JobPostingDetail() {
           </Card.Content>
           <Card.Content extra>
             <Button
-              onClick={(e) => confirm(jobPosting.jobPostingId)}
+              onClick={() => confirm(jobPosting.jobPostingId)}
               floated="right"
               inverted
               color="green"
