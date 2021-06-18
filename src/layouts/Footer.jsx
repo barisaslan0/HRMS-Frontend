@@ -1,5 +1,15 @@
 import React from "react";
-import { List, Header, Grid, Segment, Container } from "semantic-ui-react";
+import {
+  List,
+  Header,
+  Grid,
+  Segment,
+  Container,
+  Icon,
+  Divider,
+  Image,
+} from "semantic-ui-react";
+import logo from "../images/logo.png";
 
 export default function Footer() {
   return (
@@ -16,25 +26,68 @@ export default function Footer() {
                 </List>
               </Grid.Column>
               <Grid.Column width={3}>
-                <Header inverted as="h4" content="Services" />
+                <Header inverted as="h4" content="YARDIM" />
                 <List link inverted>
-                  <List.Item as="a">Banana Pre-Order</List.Item>
-                  <List.Item as="a">DNA FAQ</List.Item>
-                  <List.Item as="a">How To Access</List.Item>
-                  <List.Item as="a">Favorite X-Men</List.Item>
+                  <List.Item as="a">Sorum var</List.Item>
+                  <List.Item as="a">Önerim var</List.Item>
+                  <List.Item as="a">Sık SorulanSorular</List.Item>
+                </List>
+              </Grid.Column>
+              <Grid.Column width={3}>
+                <Header inverted as="h4" content="SOSYAL MEDYA" />
+                <List link inverted>
+                  <List.Item
+                    href="https://www.youtube.com/channel/UC2O7g9KfiSD5GKnKzkV_JDA"
+                    target="_blank"
+                    as="a"
+                  >
+                    <Icon name="youtube" />
+                    YouTube
+                  </List.Item>
+                  <List.Item
+                    href="https://www.instagram.com/baris_aslan201/"
+                    target="_blank"
+                    as="a"
+                  >
+                    <Icon name="instagram" />
+                    Instagram
+                  </List.Item>
+                  <List.Item
+                    href="https://twitter.com/barisaslan0"
+                    target="_blank"
+                    as="a"
+                  >
+                    <Icon name="twitter" />
+                    Twitter
+                  </List.Item>
                 </List>
               </Grid.Column>
               <Grid.Column width={7}>
                 <Header as="h4" inverted>
-                  Footer Header
+                  Arabul.com
                 </Header>
-                <p>
-                  Extra space for a call to action inside the footer that could
-                  help re-engage users.
-                </p>
+                <p>Aradığın işi bulduğun site</p>
               </Grid.Column>
             </Grid.Row>
           </Grid>
+          <Divider inverted section />
+          <Container textAlign="center">
+            <Image src={logo} centered size="tiny" />
+            <List horizontal inverted divided link size="small">
+              <List.Item as="a" href="#">
+                Copyright © Barış Aslan
+              </List.Item>
+              <List.Item as="a" href="#">
+                İletişime Geçin
+              </List.Item>
+              <List.Item as="a" href="#">
+                Şartlar ve Koşullar
+              </List.Item>
+              <List.Item as="a" href="#">
+                Gizlilik Politikası
+              </List.Item>
+            </List>
+          </Container>
         </Container>
       </Segment>
     </div>

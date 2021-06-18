@@ -4,10 +4,7 @@ import JobPostingService from "../services/jobPostingService";
 import { Table, Header, Button, Icon } from "semantic-ui-react";
 import BusinessIcon from "@material-ui/icons/Business";
 import DetailsIcon from "@material-ui/icons/Details";
-import WorkIcon from "@material-ui/icons/Work";
-import TrackChangesRoundedIcon from "@material-ui/icons/TrackChangesRounded";
 import PinDropRoundedIcon from "@material-ui/icons/PinDropRounded";
-import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 
 export default function JobPostingDetail() {
   let { jobPostingId } = useParams();
@@ -140,7 +137,7 @@ export default function JobPostingDetail() {
           </Table>
         </div>
       ))}
-      <Button floated="right" inverted color="green">
+      <Button style={{marginTop:"5pt"}} floated="right" inverted color="green">
         BAŞVUR
       </Button>
     </div>

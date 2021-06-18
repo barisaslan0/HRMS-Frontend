@@ -1,14 +1,19 @@
 import React from "react";
-import { Button, Container, Dropdown, Menu} from "semantic-ui-react";
-import AssessmentIcon from "@material-ui/icons/Assessment";
+import { Button, Container, Dropdown, Menu, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import logo from "../images/logo.png";
 
 export default function Navi() {
   return (
     <div>
       <Menu color="red" inverted fixed="top" size="large">
         <Container className="app">
-          <Menu.Item>BEYAZYAKA.COM</Menu.Item>
+          <Menu.Item>
+            <Image
+              src={logo}
+              size="tiny"
+            />
+          </Menu.Item>
           <Menu.Item as={NavLink} to="/home">
             Ana Sayfa
           </Menu.Item>
@@ -27,7 +32,7 @@ export default function Navi() {
               <Button inverted color="black" style={{ marginRight: "0.5em" }}>
                 GİRİŞ YAP
               </Button>
-              <Dropdown item text='İŞVEREN' style={{ marginRight: "0.5em" }}>
+              <Dropdown item text="İŞVEREN" style={{ marginRight: "0.5em" }}>
                 <Dropdown.Menu>
                   <Dropdown.Item>KAYIT OL</Dropdown.Item>
                   <Dropdown.Item>GİRİŞ YAP</Dropdown.Item>
