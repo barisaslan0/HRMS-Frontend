@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Button, Card, Header } from "semantic-ui-react";
+import { Button, Card, Header ,Icon} from "semantic-ui-react";
 import JobPostingService from "../services/jobPostingService";
 import HourglassFullRoundedIcon from "@material-ui/icons/HourglassFullRounded";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
+import BusinessIcon from "@material-ui/icons/Business";
 
 export default function ConfirmJobPosting() {
   let jobPostingService = new JobPostingService();
@@ -18,9 +20,9 @@ export default function ConfirmJobPosting() {
   }, []);
 
   const confirm = (jobPostingId) => {
-    jobPostingService.confirm(jobPostingId).then(function () {
-      window.location.reload();
-    });
+    jobPostingService
+      .confirm(jobPostingId)
+      .then(toast.success("İLAN ONAYLANDI"),window.location.reload());
   };
 
   return (
@@ -33,10 +35,13 @@ export default function ConfirmJobPosting() {
         {jobPostings.map((jobPosting) => (
           <Card fluid>
             <Card.Content>
-              <Card.Header>{jobPosting.employer.companyName}</Card.Header>
+              <BusinessIcon></BusinessIcon>
+              <Card.Header>{jobPosting.jobPosition.positionName}</Card.Header>
               <Card.Meta>{jobPosting.employer.companyName}</Card.Meta>
-              <Card.Meta>{jobPosting.city.name}</Card.Meta>
-              <Card.Description>{jobPosting.jobDescription}</Card.Description>
+              <Card.Description>
+                <Icon name="map marker alternate" />
+                {jobPosting.city.name}
+              </Card.Description>
             </Card.Content>
             <Card.Content extra>
               <div className="ui two buttons">

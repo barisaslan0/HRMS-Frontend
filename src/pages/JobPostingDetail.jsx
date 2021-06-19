@@ -4,7 +4,6 @@ import JobPostingService from "../services/jobPostingService";
 import { Table, Header, Button, Icon } from "semantic-ui-react";
 import BusinessIcon from "@material-ui/icons/Business";
 import DetailsIcon from "@material-ui/icons/Details";
-import PinDropRoundedIcon from "@material-ui/icons/PinDropRounded";
 
 export default function JobPostingDetail() {
   let { jobPostingId } = useParams();
@@ -37,14 +36,12 @@ export default function JobPostingDetail() {
                 <Table.Cell>
                   <BusinessIcon /> Şirket
                 </Table.Cell>
-                <Table.Cell>
-                  {jobPosting.employer.companyName}
-                </Table.Cell>
+                <Table.Cell>{jobPosting.employer.companyName}</Table.Cell>
               </Table.Row>
 
               <Table.Row>
                 <Table.Cell collapsing>
-                  <PinDropRoundedIcon /> Şehir
+                  <Icon name="map marker alternate" /> Şehir
                 </Table.Cell>
                 <Table.Cell>{jobPosting.city.name}</Table.Cell>
               </Table.Row>
@@ -62,28 +59,20 @@ export default function JobPostingDetail() {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>Pozisyon</Table.Cell>
-                <Table.Cell>
-                  {jobPosting.jobPosition.positionName}
-                </Table.Cell>
+                <Table.Cell>{jobPosting.jobPosition.positionName}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Açık Pozisyon Sayısı</Table.Cell>
-                <Table.Cell>
-                  {jobPosting.numberOfOpenPosition}
-                </Table.Cell>
+                <Table.Cell>{jobPosting.numberOfOpenPosition}</Table.Cell>
               </Table.Row>
 
               <Table.Row>
                 <Table.Cell>Çalışma Türü</Table.Cell>
-                <Table.Cell>
-                  {jobPosting.workType.workType}
-                </Table.Cell>
+                <Table.Cell>{jobPosting.workType.workType}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Çalışma Zamanı</Table.Cell>
-                <Table.Cell>
-                  {jobPosting.workTime.workTime}
-                </Table.Cell>
+                <Table.Cell>{jobPosting.workTime.workTime}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -137,7 +126,12 @@ export default function JobPostingDetail() {
           </Table>
         </div>
       ))}
-      <Button style={{marginTop:"5pt"}} floated="right" inverted color="green">
+      <Button
+        style={{ marginTop: "5pt" }}
+        floated="right"
+        inverted
+        color="green"
+      >
         BAŞVUR
       </Button>
     </div>

@@ -7,8 +7,9 @@ import WorkTimeService from "../services/workTimeService";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import JobPostingService from "../services/jobPostingService";
-import { Form, Button, Card } from "semantic-ui-react";
-import { ErrorRounded } from "@material-ui/icons";
+import { Form, Button, Card, Segment, Header, Image } from "semantic-ui-react";
+import { toast } from "react-toastify";
+import logo from "../images/logo-kırmızı.png";
 
 export default function AddJobPosting() {
   let jobPostingService = new JobPostingService();
@@ -80,7 +81,10 @@ export default function AddJobPosting() {
       console.log(values);
       jobPostingService
         .add(values)
-        .then((result) => console.log(result.data.data));
+        .then(
+          (result) => console.log(result.data.data),
+          toast.warning("İLAN ONAY BEKLİYOR")
+        );
     },
   });
 
@@ -110,157 +114,162 @@ export default function AddJobPosting() {
 
   return (
     <div className="form">
-      <Card fluid>
-        <Card.Content header="İŞ İLANI YAYINLAMA"></Card.Content>
-        <Card.Content>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group widths="equal">
-              <Form.Select
-                id="jobPositionId"
-                onChange={(fieldName, data) =>
-                  setFieldValue("jobPositionId", data.value)
-                }
-                onBlur={onBlur}
-                value={values.jobPositionId}
-                options={jobPositonOptions}
-                label="Pozisyon"
-                placeholder="Pozisyon Seçiniz"
-                search
-                selection
-                error={
-                  errors.obPositionId &&
-                  touched.jobPositionId &&
-                  errors.jobPositionId
-                }
-              ></Form.Select>
-              <Form.Select
-                id="cityId"
-                onChange={(fieldName, data) =>
-                  setFieldValue("cityId", data.value)
-                }
-                onBlur={onBlur}
-                value={values.cityId}
-                options={cityOptions}
-                label="Şehir"
-                placeholder="Şehir Seçiniz"
-                search
-                selection
-              ></Form.Select>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Input
-                id="numberOfOpenPosition"
-                type="number"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.numberOfOpenPosition}
-                fluid
-                label="Açık Pozisyon Sayısı"
-                placeholder="Açık Pozisyon Sayısı"
-                error={
-                  errors.numberOfOpenPosition &&
-                  touched.numberOfOpenPosition &&
-                  errors.numberOfOpenPosition
-                }
-              ></Form.Input>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Input
-                id="minSalary"
-                type="number"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.minSalary}
-                fluid
-                label="Minimum Maaş Skalası"
-                placeholder="Minimum Maaş Skalası"
-                error={
-                  errors.minSalary && touched.minSalary && errors.minSalary
-                }
-              ></Form.Input>
-              <Form.Input
-                id="maxSalary"
-                type="number"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.maxSalary}
-                fluid
-                label="Maksimum Maaş Skalası"
-                placeholder="Maksimum Maaş Skalası"
-                error={
-                  errors.maxSalary && touched.maxSalary && errors.maxSalary
-                }
-              ></Form.Input>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Select
-                id="workTypeId"
-                onChange={(fieldName, data) =>
-                  setFieldValue("workTypeId", data.value)
-                }
-                onBlur={onBlur}
-                value={values.workTypeId}
-                options={workTypeOptions}
-                label="Çalışma Türü"
-                placeholder="Çalışma Türü Seçiniz"
-                search
-                selection
-                error={
-                  errors.workTypeId && touched.workTypeId && errors.workTypeId
-                }
-              ></Form.Select>
-              <Form.Select
-                id="workTimeId"
-                onChange={(fieldName, data) =>
-                  setFieldValue("workTimeId", data.value)
-                }
-                onBlur={onBlur}
-                value={values.workTimeId}
-                options={workTimeOptions}
-                label="Çalışma Zamanı"
-                placeholder="Çalışma Zamanı Seçiniz"
-                search
-                selection
-                error={
-                  errors.workTimeId && touched.workTimeId && errors.workTimeId
-                }
-              ></Form.Select>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Input
-                id="deadline"
-                type="date"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.deadline}
-                fluid
-                label="Son Başvuru Tarihi"
-                error={errors.deadline && touched.deadline && errors.deadline}
-              ></Form.Input>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.TextArea
-                id="jobDescription"
-                type="text"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.jobDescription}
-                fluid
-                label="Açıklama"
-                placeholder="Açıklama Yazınız..."
-                error={
-                  errors.jobDescription &&
-                  touched.jobDescription &&
-                  errors.jobDescription
-                }
-              ></Form.TextArea>
-            </Form.Group>
-            <Button handleReset={handleReset} type="submit" disabled={!dirty || isSubmitting} primary>
-              YAYINLA
-            </Button>
-          </Form>
-        </Card.Content>
-      </Card>
+      <Header as="h2" inverted color="red" textAlign="center">
+        <Header.Content>
+          <Image src={logo} size="tiny" />
+        </Header.Content>
+        <Header.Content>İŞ İLANI YAYINLAMA</Header.Content>
+      </Header>
+
+      <Segment color="red">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group widths="equal">
+            <Form.Select
+              id="jobPositionId"
+              onChange={(fieldName, data) =>
+                setFieldValue("jobPositionId", data.value)
+              }
+              onBlur={onBlur}
+              value={values.jobPositionId}
+              options={jobPositonOptions}
+              label="Pozisyon"
+              placeholder="Pozisyon Seçiniz"
+              search
+              selection
+              error={
+                errors.obPositionId &&
+                touched.jobPositionId &&
+                errors.jobPositionId
+              }
+            ></Form.Select>
+            <Form.Select
+              id="cityId"
+              onChange={(fieldName, data) =>
+                setFieldValue("cityId", data.value)
+              }
+              onBlur={onBlur}
+              value={values.cityId}
+              options={cityOptions}
+              label="Şehir"
+              placeholder="Şehir Seçiniz"
+              search
+              selection
+            ></Form.Select>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              id="numberOfOpenPosition"
+              type="number"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.numberOfOpenPosition}
+              fluid
+              label="Açık Pozisyon Sayısı"
+              placeholder="Açık Pozisyon Sayısı"
+              error={
+                errors.numberOfOpenPosition &&
+                touched.numberOfOpenPosition &&
+                errors.numberOfOpenPosition
+              }
+            ></Form.Input>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              id="minSalary"
+              type="number"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.minSalary}
+              fluid
+              label="Minimum Maaş Skalası"
+              placeholder="Minimum Maaş Skalası"
+              error={errors.minSalary && touched.minSalary && errors.minSalary}
+            ></Form.Input>
+            <Form.Input
+              id="maxSalary"
+              type="number"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.maxSalary}
+              fluid
+              label="Maksimum Maaş Skalası"
+              placeholder="Maksimum Maaş Skalası"
+              error={errors.maxSalary && touched.maxSalary && errors.maxSalary}
+            ></Form.Input>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Select
+              id="workTypeId"
+              onChange={(fieldName, data) =>
+                setFieldValue("workTypeId", data.value)
+              }
+              onBlur={onBlur}
+              value={values.workTypeId}
+              options={workTypeOptions}
+              label="Çalışma Türü"
+              placeholder="Çalışma Türü Seçiniz"
+              search
+              selection
+              error={
+                errors.workTypeId && touched.workTypeId && errors.workTypeId
+              }
+            ></Form.Select>
+            <Form.Select
+              id="workTimeId"
+              onChange={(fieldName, data) =>
+                setFieldValue("workTimeId", data.value)
+              }
+              onBlur={onBlur}
+              value={values.workTimeId}
+              options={workTimeOptions}
+              label="Çalışma Zamanı"
+              placeholder="Çalışma Zamanı Seçiniz"
+              search
+              selection
+              error={
+                errors.workTimeId && touched.workTimeId && errors.workTimeId
+              }
+            ></Form.Select>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              id="deadline"
+              type="date"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.deadline}
+              fluid
+              label="Son Başvuru Tarihi"
+              error={errors.deadline && touched.deadline && errors.deadline}
+            ></Form.Input>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.TextArea
+              id="jobDescription"
+              type="text"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.jobDescription}
+              fluid
+              label="Açıklama"
+              placeholder="Açıklama Yazınız..."
+              error={
+                errors.jobDescription &&
+                touched.jobDescription &&
+                errors.jobDescription
+              }
+            ></Form.TextArea>
+          </Form.Group>
+          <Button
+            handleReset={handleReset}
+            type="submit"
+            disabled={!dirty || isSubmitting}
+            primary
+          >
+            YAYINLA
+          </Button>
+        </Form>
+      </Segment>
     </div>
   );
 }

@@ -9,10 +9,7 @@ export default function Navi() {
       <Menu color="red" inverted fixed="top" size="large">
         <Container className="app">
           <Menu.Item>
-            <Image
-              src={logo}
-              size="tiny"
-            />
+            <Image src={logo} size="tiny" />
           </Menu.Item>
           <Menu.Item as={NavLink} to="/home">
             Ana Sayfa
@@ -26,22 +23,37 @@ export default function Navi() {
 
           <Menu.Menu position="right">
             <Menu.Item>
-              <Button inverted color="black" style={{ marginRight: "0.5em" }}>
+              <Button
+                as={NavLink}
+                to="/registerjobseeker"
+                inverted
+                color="black"
+                style={{ marginRight: "0.5em" }}
+              >
                 KAYIT OL
               </Button>
-              <Button inverted color="black" style={{ marginRight: "0.5em" }}>
+              <Button
+                as={NavLink}
+                to="/loginjobseeker"
+                inverted
+                color="black"
+                style={{ marginRight: "0.5em" }}
+              >
                 GİRİŞ YAP
               </Button>
               <Dropdown item text="İŞVEREN" style={{ marginRight: "0.5em" }}>
                 <Dropdown.Menu>
-                  <Dropdown.Item>KAYIT OL</Dropdown.Item>
-                  <Dropdown.Item>GİRİŞ YAP</Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to="/registeremployer">
+                    KAYIT OL
+                  </Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to="/loginemployer">
+                    GİRİŞ YAP
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <Button
-                basic
                 inverted
-                color="teal"
+                color="green"
                 as={NavLink}
                 to="/jobpostings/add"
               >

@@ -11,15 +11,37 @@ import ExamineJobPostingDetail from "./pages/ExamineJobPostingDetail";
 import Footer from "./layouts/Footer";
 import HomePage from "./pages/HomePage";
 import { Switch } from "react-router-dom";
+import RegisterJobseeker from "./pages/RegisterJobseeker";
+import LoginJobseeker from "./pages/LoginJobseeker";
+import RegisterEmployer from "./pages/RegisterEmployer";
+import LoginEmployer from "./pages/LoginEmployer";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="app">
+      <ToastContainer position="top-right" />
       <Container className="main">
         <Navi></Navi>
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route exact path="/home" component={HomePage}></Route>
+          <Route
+            exact
+            path="/registerjobseeker"
+            component={RegisterJobseeker}
+          ></Route>
+          <Route
+            exact
+            path="/loginjobseeker"
+            component={LoginJobseeker}
+          ></Route>
+          <Route
+            exact
+            path="/registeremployer"
+            component={RegisterEmployer}
+          ></Route>
+          <Route exact path="/loginemployer" component={LoginEmployer}></Route>
           <Route exact path="/jobpostings" component={Dashboard}></Route>
           <Route
             exact
