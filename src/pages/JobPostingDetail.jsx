@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JobPostingService from "../services/jobPostingService";
-import { Table, Header, Button, Icon } from "semantic-ui-react";
+import { Table, Message, Button, Icon, Image,Segment } from "semantic-ui-react";
 import BusinessIcon from "@material-ui/icons/Business";
 import DetailsIcon from "@material-ui/icons/Details";
 
@@ -19,29 +19,68 @@ export default function JobPostingDetail() {
 
   return (
     <div className="card">
-      <Header as="h2" icon textAlign="center">
-        <Header.Content>İŞ İLANI DETAYI</Header.Content>
-        <DetailsIcon></DetailsIcon>
-      </Header>
       {jobPostings.map((jobPosting) => (
         <div>
+          <Segment color="green" textAlign="center">
+            İLAN DETAYI
+          </Segment>
           <Table color="red" celled striped>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell colSpan="2">ŞİRKET</Table.HeaderCell>
+                <Table.HeaderCell colSpan="2">
+                  {!jobPosting.employer.image ? (
+                    <Image
+                      circular
+                      floated="left"
+                      size="mini"
+                      src="https://aday-spage.mncdn.com/Knet_img_bag-with-gray-bg.832c700.svg?v=p0611211353224"
+                    ></Image>
+                  ) : (
+                    <Image
+                      circular
+                      floated="left"
+                      size="mini"
+                      src={jobPosting.employer.image.imageUrl}
+                    ></Image>
+                  )}{" "}
+                  ŞİRKET
+                  <br />
+                  BİLGİLERİ
+                </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <BusinessIcon /> Şirket
+                  <Icon name="warehouse" /> Şirket
                 </Table.Cell>
                 <Table.Cell>{jobPosting.employer.companyName}</Table.Cell>
               </Table.Row>
-
+              <Table.Row>
+                <Table.Cell>
+                  <Icon name="world" />
+                  Web Sitesi
+                </Table.Cell>
+                <Table.Cell>
+                  <a
+                    target="_blank"
+                    href={"https://" + jobPosting.employer.webSite}
+                  >
+                    {jobPosting.employer.webSite}
+                  </a>
+                </Table.Cell>
+              </Table.Row>
               <Table.Row>
                 <Table.Cell collapsing>
-                  <Icon name="map marker alternate" /> Şehir
+                  <Icon name="phone" />
+                  Telefon Numarası
+                </Table.Cell>
+                <Table.Cell>{jobPosting.employer.phoneNumber}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  <Icon name="map marker alternate" />
+                  Şehir
                 </Table.Cell>
                 <Table.Cell>{jobPosting.city.name}</Table.Cell>
               </Table.Row>
@@ -62,10 +101,9 @@ export default function JobPostingDetail() {
                 <Table.Cell>{jobPosting.jobPosition.positionName}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>Açık Pozisyon Sayısı</Table.Cell>
+                <Table.Cell collapsing>Açık Pozisyon Sayısı</Table.Cell>
                 <Table.Cell>{jobPosting.numberOfOpenPosition}</Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>Çalışma Türü</Table.Cell>
                 <Table.Cell>{jobPosting.workType.workType}</Table.Cell>
@@ -88,9 +126,9 @@ export default function JobPostingDetail() {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>Minimum Maaş Skalası</Table.Cell>
-                <Table.Cell>{jobPosting.minSalary} TL</Table.Cell>
+                <Table.Cell positive>{jobPosting.minSalary} TL</Table.Cell>
                 <Table.Cell>Maksimum Maaş Skalası</Table.Cell>
-                <Table.Cell>{jobPosting.maxSalary} TL</Table.Cell>
+                <Table.Cell positive>{jobPosting.maxSalary} TL</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -120,18 +158,13 @@ export default function JobPostingDetail() {
             </Table.Header>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{jobPosting.deadline}</Table.Cell>
+                <Table.Cell negative>{jobPosting.deadline}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
         </div>
       ))}
-      <Button
-        style={{ marginTop: "5pt" }}
-        floated="right"
-        inverted
-        color="green"
-      >
+      <Button style={{ marginTop: "5pt" }} floated="right" color="green">
         BAŞVUR
       </Button>
     </div>

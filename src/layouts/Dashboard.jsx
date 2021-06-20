@@ -3,6 +3,8 @@ import { Grid, Button } from "semantic-ui-react";
 import JobPostingList from "../pages/JobPostingList";
 import Cities from "./Cities";
 import JobPositions from "./JobPositions";
+import WorkTypes from "./WorkTypes";
+import WorkTimes from "./WorkTimes";
 
 export default function Dashboard() {
   return (
@@ -12,6 +14,8 @@ export default function Dashboard() {
           <Grid.Column width={4}>
             <JobPositions></JobPositions>
             <Cities></Cities>
+            <WorkTypes></WorkTypes>
+            <WorkTimes></WorkTimes>
             <Button primary style={{ marginTop: "15pt" }}>
               UYGULA
             </Button>

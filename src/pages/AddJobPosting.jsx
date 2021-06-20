@@ -7,7 +7,7 @@ import WorkTimeService from "../services/workTimeService";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import JobPostingService from "../services/jobPostingService";
-import { Form, Button, Card, Segment, Header, Image } from "semantic-ui-react";
+import { Form, Button,Dropdown, Segment, Header, Image } from "semantic-ui-react";
 import { toast } from "react-toastify";
 import logo from "../images/logo-kırmızı.png";
 
