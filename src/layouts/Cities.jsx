@@ -17,7 +17,7 @@ export default function Cities() {
   }));
 
   return (
-    <div>
+    <div style={{ marginTop: "15pt" }}>
       <label>Şehir</label>
       <Dropdown
         placeholder="Şehir Seç"

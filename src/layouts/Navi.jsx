@@ -3,7 +3,7 @@ import { Button, Container, Dropdown, Menu, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import logo from "../images/logo.png";
 
-export default function Navi() {
+export default function Navi({signIn}) {
   return (
     <div>
       <Menu color="red" inverted fixed="top" size="large">
@@ -52,7 +52,6 @@ export default function Navi() {
                 </Dropdown.Menu>
               </Dropdown>
               <Button
-                inverted
                 color="green"
                 as={NavLink}
                 to="/jobpostings/add"

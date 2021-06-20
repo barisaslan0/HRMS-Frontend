@@ -12,7 +12,9 @@ export default function Dashboard() {
           <Grid.Column width={4}>
             <JobPositions></JobPositions>
             <Cities></Cities>
-            <Button primary>UYGULA</Button>
+            <Button primary style={{ marginTop: "15pt" }}>
+              UYGULA
+            </Button>
           </Grid.Column>
           <Grid.Column width={12}>
             <JobPostingList></JobPostingList>

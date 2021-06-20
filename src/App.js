@@ -10,31 +10,54 @@ import JobPostingDetail from "./pages/JobPostingDetail";
 import ExamineJobPostingDetail from "./pages/ExamineJobPostingDetail";
 import Footer from "./layouts/Footer";
 import HomePage from "./pages/HomePage";
-import { Switch } from "react-router-dom";
+import { Switch, useHistory } from "react-router-dom";
 import RegisterJobseeker from "./pages/RegisterJobseeker";
 import LoginJobseeker from "./pages/LoginJobseeker";
 import RegisterEmployer from "./pages/RegisterEmployer";
 import LoginEmployer from "./pages/LoginEmployer";
 import { ToastContainer } from "react-toastify";
+import { useState } from "react";
+import SignedInJobseeker from "./layouts/SignedInJobseeker";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const history = useHistory();
+
+  function handleSignIn(params) {
+    setIsAuthenticated(true);
+    history.push("/jobpostings")
+  }
+
+  function handleSignOut(params) {
+    setIsAuthenticated(false);
+    history.push("/home")
+  }
   return (
     <div className="app">
       <ToastContainer position="top-right" />
       <Container className="main">
-        <Navi></Navi>
+        {isAuthenticated ? (
+          <SignedInJobseeker signOut={handleSignOut}></SignedInJobseeker>
+        ) : (
+          <Navi></Navi>
+        )}
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route exact path="/home" component={HomePage}></Route>
           <Route
             exact
             path="/registerjobseeker"
-            component={RegisterJobseeker}
+            component={() => (
+              <RegisterJobseeker signIn={handleSignIn}></RegisterJobseeker>
+            )}
           ></Route>
           <Route
             exact
             path="/loginjobseeker"
-            component={LoginJobseeker}
+            component={() => (
+              <LoginJobseeker signIn={handleSignIn}></LoginJobseeker>
+            )}
           ></Route>
           <Route
             exact

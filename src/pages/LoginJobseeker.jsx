@@ -11,8 +11,9 @@ import {
 } from "semantic-ui-react";
 import logo from "../images/logo-kırmızı.png";
 import login from "../images/login.jpg";
+import { useState } from "react";
 
-export default function LoginJobseeker() {
+export default function LoginJobseeker({signIn}) {
   return (
     <div>
       <Grid textAlign="center" verticalAlign="middle">
@@ -44,7 +45,7 @@ export default function LoginJobseeker() {
                   placeholder="Şifre"
                   type="password"
                 />
-                <Button primary fluid size="large">
+                <Button onClick={signIn} primary fluid size="large">
                   GİRİŞ YAP
                 </Button>
               </Segment>
