@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JobPostingService from "../services/jobPostingService";
-import { Table, Message, Button, Icon, Image,Segment } from "semantic-ui-react";
-import BusinessIcon from "@material-ui/icons/Business";
-import DetailsIcon from "@material-ui/icons/Details";
+import { Table, Button, Icon, Image,Segment } from "semantic-ui-react";
 
 export default function JobPostingDetail() {
   let { jobPostingId } = useParams();

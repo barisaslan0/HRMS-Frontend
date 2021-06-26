@@ -11,13 +11,20 @@ import ExamineJobPostingDetail from "./pages/ExamineJobPostingDetail";
 import Footer from "./layouts/Footer";
 import HomePage from "./pages/HomePage";
 import { Switch, useHistory } from "react-router-dom";
-import RegisterJobseeker from "./pages/RegisterJobseeker";
-import LoginJobseeker from "./pages/LoginJobseeker";
+import RegisterJobseeker from "./pages/Jobseeker/RegisterJobseeker";
+import LoginJobseeker from "./pages/Jobseeker/LoginJobseeker";
 import RegisterEmployer from "./pages/RegisterEmployer";
 import LoginEmployer from "./pages/LoginEmployer";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
 import SignedInJobseeker from "./layouts/SignedInJobseeker";
+import JobseekerDashboard from "./layouts/JobseekerDashboard";
+import CurriculumVitaeList from "./pages/Jobseeker/CurriculumVitaeList";
+import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
+import { Router } from "@material-ui/icons";
+import AddCurriculumVitae from "./pages/Jobseeker/AddCurriculumVitae";
+import CurriculumVitaeDetail from "./pages/Jobseeker/CurriculumVitaeDetail";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,12 +33,12 @@ function App() {
 
   function handleSignIn(params) {
     setIsAuthenticated(true);
-    history.push("/jobpostings")
+    history.push("/jobpostings");
   }
 
   function handleSignOut(params) {
     setIsAuthenticated(false);
-    history.push("/home")
+    history.push("/home");
   }
   return (
     <div className="app">
@@ -43,6 +50,27 @@ function App() {
           <Navi></Navi>
         )}
         <Switch>
+          <Route
+            exact
+            path={`/jobseeker/:jobseekerId/profile`}
+            component={Profile}
+          ></Route>
+          <Route
+            exact
+            path={`/jobseeker/:jobseekerId/curriculumvitaes`}
+            component={CurriculumVitaeList}
+          ></Route>
+          <Route
+            exact
+            path={`/jobseeker/:jobseekerId/settings`}
+            component={Settings}
+          ></Route>
+          <Route
+            exact
+            path={`/jobseeker/:jobseekerId/curriculumvitae/add`}
+            component={AddCurriculumVitae}
+          ></Route>
+          <Route exact path="/jobseeker/:jobseekerId/curriculumvitae/:curriculumVitaeId" component={CurriculumVitaeDetail}></Route>
           <Route exact path="/" component={HomePage}></Route>
           <Route exact path="/home" component={HomePage}></Route>
           <Route

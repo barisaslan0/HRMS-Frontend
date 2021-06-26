@@ -9,9 +9,8 @@ import {
   Message,
   Segment
 } from "semantic-ui-react";
-import logo from "../images/logo-kırmızı.png";
-import login from "../images/login.jpg";
-import { useState } from "react";
+import logo from "../../images/logo-kırmızı.png";
+import login from "../../images/logo.png"
 
 export default function LoginJobseeker({signIn}) {
   return (

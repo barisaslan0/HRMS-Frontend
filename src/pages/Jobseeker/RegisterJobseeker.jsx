@@ -9,8 +9,8 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import logo from "../images/logo-kırmızı.png";
-import register from "../images/register.png";
+import logo from "../../images/logo-kırmızı.png";
+import register from "../../images/register.png";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterJobseeker({signIn}) {

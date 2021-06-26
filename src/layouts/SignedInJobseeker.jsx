@@ -1,6 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Container, Dropdown, Menu, Image, Icon,Divider } from "semantic-ui-react";
+import {
+  Container,
+  Dropdown,
+  Menu,
+  Image,
+  Icon,
+  Divider,
+} from "semantic-ui-react";
 import logo from "../images/logo.png";
 
 export default function SignedInJobseeker({ signOut }) {
@@ -30,10 +37,19 @@ export default function SignedInJobseeker({ signOut }) {
                 style={{ marginRight: "0.5em" }}
               >
                 <Dropdown.Menu>
-                  <Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to={`/jobseeker/${3}/profile`}>
+                    <Icon name="user" /> Profil
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    as={NavLink}
+                    to={`/jobseeker/${3}/curriculumvitaes`}
+                  >
+                    <Icon name="file alternate" /> Özgeçmişler
+                  </Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to={`/jobseeker/${3}/settings`}>
                     <Icon name="setting" /> Ayarlar
                   </Dropdown.Item>
-                  <Divider/>
+                  <Divider />
                   <Dropdown.Item onClick={signOut}>
                     <Icon color="red" name="log out" /> Çıkış
                   </Dropdown.Item>
