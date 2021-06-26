@@ -33,7 +33,14 @@ export default function CurriculumVitaeList() {
         </Header>
         <Card.Group>
           {curriculumVitaes.map((curriculumVitae) => (
-            <Card as={NavLink} to={`/jobseeker/${3}/curriculumvitae/${curriculumVitae.curriculumVitaeId}`} color="green" fluid>
+            <Card
+              as={NavLink}
+              to={`/jobseeker/${3}/curriculumvitae/${
+                curriculumVitae.curriculumVitaeId
+              }`}
+              color="green"
+              fluid
+            >
               <Card.Content>
                 {!curriculumVitae.jobseeker.image ? (
                   <Image
@@ -51,13 +58,11 @@ export default function CurriculumVitaeList() {
                   ></Image>
                 )}
 
-                {/* <Card.Header>{jobPosting.jobPosition.positionName}</Card.Header>
-              <Card.Meta>{jobPosting.employer.companyName}</Card.Meta>
-              <Card.Meta>{jobPosting.workTime.workTime}</Card.Meta>
-              <Card.Description>
-                <Icon name="map marker alternate" />
-                {jobPosting.city.name}
-              </Card.Description> */}
+                <Card.Header>
+                  <Icon name="pen square" />
+                  Düzenlemek İçin Tıklayın
+                </Card.Header>
+                <Card.Description></Card.Description>
               </Card.Content>
             </Card>
           ))}

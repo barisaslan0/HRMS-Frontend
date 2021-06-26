@@ -8,10 +8,9 @@ import HrmsInput from "../../utilities/customFormControls/HrmsInput";
 import HrmsDropdown from "../../utilities/customFormControls/HrmsDropdown";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import JobPositionService from "../../services/jobPositionService";
-import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function AddWorkExperience({ curriculumVitaeId }) {
+export default function UpdateWorkExperience({workExperienceId,workplaceName,jobPositionId,startDateOfWork,endDateOfWork}) {
   let workExperienceService = new WorkExperienceService();
 
   const [jobPositions, setJobPositions] = useState([]);
@@ -24,19 +23,19 @@ export default function AddWorkExperience({ curriculumVitaeId }) {
   }, []);
 
   const initialValues = {
-    workplaceName: "",
-    jobPositionId: "",
-    startDateOfWork: "",
-    endDateOfWork: "",
+    workplaceName: workplaceName,
+    jobPositionId: jobPositionId,
+    startDateOfWork: startDateOfWork,
+    endDateOfWork: endDateOfWork,
   };
   const onSubmit = (values) => {
-    values.curriculumVitaeId = curriculumVitaeId;
+    values.workExperienceId = workExperienceId
     console.log(values);
     workExperienceService
-      .add(values)
+      .update(values)
       .then(
         (result) => console.log(result.data.data),
-        toast.success("İş Deneyimi Eklendi"),
+        toast.success("İş Deneyimi Güncellendi"),
         window.location.reload()
       );
   };
@@ -46,7 +45,6 @@ export default function AddWorkExperience({ curriculumVitaeId }) {
     text: jobPosition.positionName,
     value: jobPosition.jobPositionId,
   }));
-
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -85,7 +83,7 @@ export default function AddWorkExperience({ curriculumVitaeId }) {
                 ></HrmsInput>
               </FormGroup>
               <Button type="submit" color="green">
-                EKLE
+                GÜNCELLE
               </Button>
             </Form>
           </Segment>

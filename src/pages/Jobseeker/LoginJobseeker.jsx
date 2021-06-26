@@ -10,7 +10,7 @@ import {
   Segment
 } from "semantic-ui-react";
 import logo from "../../images/logo-kırmızı.png";
-import login from "../../images/logo.png"
+import login from "../../images/login.jpg"
 
 export default function LoginJobseeker({signIn}) {
   return (

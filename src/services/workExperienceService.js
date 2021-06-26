@@ -4,4 +4,8 @@ export default class WorkExperienceService {
   add(values) {
     return axios.post("http://localhost:8080/api/workexperiences/add", values);
   }
+
+  update(values) {
+    return axios.post("http://localhost:8080/api/workexperiences/update", values);
+  }
 }
