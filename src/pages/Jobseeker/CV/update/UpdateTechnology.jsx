@@ -1,42 +1,42 @@
 import React from "react";
-import CoverLetterService from "../../services/coverLetterService";
+import TechnologyService from "../../../../services/technologyService";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import { toast } from "react-toastify";
-import HrmsTextAreaInput from "../../utilities/customFormControls/HrmsTextAreaInput";
+import HrmsInput from "../../../../utilities/customFormControls/HrmsInput";
 
-export default function AddCoverLetter({curriculumVitaeId}) {
-  let coverLetterService = new CoverLetterService();
+export default function UpdateTechnology({technologyId,technologyName}) {
+  let technologyService = new TechnologyService();
   const initialValues = {
-    coverLetter: "",
+    technologyName: technologyName,
   };
   const onSubmit = (values) => {
-    values.curriculumVitaeId = curriculumVitaeId;
+    values.technologyId=technologyId;
     console.log(values);
-    coverLetterService
-      .add(values)
+    technologyService
+      .update(values)
       .then(
         (result) => console.log(result.data.data),
-        toast.success("Ön Yazı Eklendi"),
+        toast.success("Teknoloji Güncellendi"),
         window.location.reload()
       );
   };
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
-              <HrmsTextAreaInput
-                name="coverLetter"
+              <HrmsInput
+                name="technologyName"
                 type="text"
-                label="Ön Yazı"
-                placeholder="Ön Yazıyı Buraya Giriniz..."
-              ></HrmsTextAreaInput>
+                label="Yetenek"
+                placeholder="Yetenek"
+              ></HrmsInput>
             </FormGroup>
             <Button type="submit" color="green">
-              EKLE
+              GÜNCELLE
             </Button>
           </Form>
         </Segment>

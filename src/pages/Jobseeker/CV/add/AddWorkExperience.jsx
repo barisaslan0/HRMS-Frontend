@@ -1,16 +1,17 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import WorkExperienceService from "../../services/workExperienceService";
+import WorkExperienceService from "../../../../services/workExperienceService";
 import { useState } from "react";
 import { useEffect } from "react";
-import HrmsInput from "../../utilities/customFormControls/HrmsInput";
-import HrmsDropdown from "../../utilities/customFormControls/HrmsDropdown";
+import HrmsInput from "../../../../utilities/customFormControls/HrmsInput";
+import HrmsDropdown from "../../../../utilities/customFormControls/HrmsDropdown";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
-import JobPositionService from "../../services/jobPositionService";
+import JobPositionService from "../../../../services/jobPositionService";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function UpdateWorkExperience({workExperienceId,workplaceName,jobPositionId,startDateOfWork,endDateOfWork}) {
+export default function AddWorkExperience({ curriculumVitaeId }) {
   let workExperienceService = new WorkExperienceService();
 
   const [jobPositions, setJobPositions] = useState([]);
@@ -23,19 +24,19 @@ export default function UpdateWorkExperience({workExperienceId,workplaceName,job
   }, []);
 
   const initialValues = {
-    workplaceName: workplaceName,
-    jobPositionId: jobPositionId,
-    startDateOfWork: startDateOfWork,
-    endDateOfWork: endDateOfWork,
+    workplaceName: "",
+    jobPositionId: "",
+    startDateOfWork: "",
+    endDateOfWork: "",
   };
   const onSubmit = (values) => {
-    values.workExperienceId = workExperienceId
+    values.curriculumVitaeId = curriculumVitaeId;
     console.log(values);
     workExperienceService
-      .update(values)
+      .add(values)
       .then(
         (result) => console.log(result.data.data),
-        toast.success("İş Deneyimi Güncellendi"),
+        toast.success("İş Deneyimi Eklendi"),
         window.location.reload()
       );
   };
@@ -45,6 +46,7 @@ export default function UpdateWorkExperience({workExperienceId,workplaceName,job
     text: jobPosition.positionName,
     value: jobPosition.jobPositionId,
   }));
+
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -83,7 +85,7 @@ export default function UpdateWorkExperience({workExperienceId,workplaceName,job
                 ></HrmsInput>
               </FormGroup>
               <Button type="submit" color="green">
-                GÜNCELLE
+                EKLE
               </Button>
             </Form>
           </Segment>

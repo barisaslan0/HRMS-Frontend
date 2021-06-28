@@ -23,7 +23,6 @@ import CurriculumVitaeList from "./pages/Jobseeker/CurriculumVitaeList";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import { Router } from "@material-ui/icons";
-import AddCurriculumVitae from "./pages/Jobseeker/AddCurriculumVitae";
 import CurriculumVitaeDetail from "./pages/Jobseeker/CurriculumVitaeDetail";
 
 function App() {
@@ -64,11 +63,6 @@ function App() {
             exact
             path={`/jobseeker/:jobseekerId/settings`}
             component={Settings}
-          ></Route>
-          <Route
-            exact
-            path={`/jobseeker/:jobseekerId/curriculumvitae/add`}
-            component={AddCurriculumVitae}
           ></Route>
           <Route exact path="/jobseeker/:jobseekerId/curriculumvitae/:curriculumVitaeId" component={CurriculumVitaeDetail}></Route>
           <Route exact path="/" component={HomePage}></Route>

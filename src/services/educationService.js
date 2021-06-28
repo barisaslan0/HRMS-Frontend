@@ -4,4 +4,18 @@ export default class EducationService {
   add(values) {
     return axios.post("http://localhost:8080/api/educations/add", values);
   }
+
+  update(values) {
+    return axios.put(
+      "http://localhost:8080/api/educations/update",
+      values
+    );
+  }
+
+  delete(educationId) {
+    return axios.delete(
+      "http://localhost:8080/api/educations/delete?educationId=" +
+        educationId
+    );
+  }
 }

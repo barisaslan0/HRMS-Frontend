@@ -1,10 +1,10 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import EducationService from "../../services/educationService";
-import HrmsInput from "../../utilities/customFormControls/HrmsInput";
+import HrmsInput from "../../../../utilities/customFormControls/HrmsInput";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import { toast } from "react-toastify";
+import EducationService from "../../../../services/educationService";
 
 export default function AddEducation({curriculumVitaeId}) {
   let educationServide = new EducationService();

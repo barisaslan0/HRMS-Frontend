@@ -12,4 +12,8 @@ export default class CurriculumVitaeService{
     add(values){
         return axios.post("http://localhost:8080/api/curriculumvitaes/add",values)
     }
+
+    delete(curriculumVitaeId){
+        return axios.delete("http://localhost:8080/api/curriculumvitaes/delete?curriculumVitaeId="+curriculumVitaeId)
+    }
 }

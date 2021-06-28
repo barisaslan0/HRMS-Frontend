@@ -1,10 +1,9 @@
 import React from "react";
-import TechnologyService from "../../services/technologyService";
+import TechnologyService from "../../../../services/technologyService";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import { toast } from "react-toastify";
-import HrmsInput from "../../utilities/customFormControls/HrmsInput";
+import HrmsInput from "../../../../utilities/customFormControls/HrmsInput";
 
 export default function AddTechnology({curriculumVitaeId}) {
   let technologyService = new TechnologyService();

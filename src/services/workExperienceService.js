@@ -6,6 +6,16 @@ export default class WorkExperienceService {
   }
 
   update(values) {
-    return axios.post("http://localhost:8080/api/workexperiences/update", values);
+    return axios.put(
+      "http://localhost:8080/api/workexperiences/update",
+      values
+    );
+  }
+
+  delete(workExperienceId) {
+    return axios.delete(
+      "http://localhost:8080/api/workexperiences/delete?workExperienceId=" +
+        workExperienceId
+    );
   }
 }

@@ -1,44 +1,42 @@
 import React from "react";
-import CurriculumVitaeService from "../../services/curriculumVitaeService";
+import CoverLetterService from "../../../../services/coverLetterService";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import { toast } from "react-toastify";
-import HrmsTextAreaInput from "../../utilities/customFormControls/HrmsTextAreaInput";
-import CoverLetterService from "../../services/coverLetterService";
+import HrmsTextAreaInput from "../../../../utilities/customFormControls/HrmsTextAreaInput";
 
-export default function UpdateCoverLetter({ coverLetterId, coverLetter }) {
+export default function AddCoverLetter({curriculumVitaeId}) {
   let coverLetterService = new CoverLetterService();
   const initialValues = {
-    coverLetter: coverLetter,
+    coverLetter: "",
   };
   const onSubmit = (values) => {
-    values.coverLetterId = coverLetterId;
-
+    values.curriculumVitaeId = curriculumVitaeId;
     console.log(values);
     coverLetterService
-      .update(values)
+      .add(values)
       .then(
         (result) => console.log(result.data.data),
-        toast.success("Ön Yazı Güncellendi"),
+        toast.success("Ön Yazı Eklendi"),
         window.location.reload()
       );
   };
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsTextAreaInput
                 name="coverLetter"
                 type="text"
-                label="Önyazı"
-                placeholder="Önyazı giriniz..."
+                label="Ön Yazı"
+                placeholder="Ön Yazıyı Buraya Giriniz..."
               ></HrmsTextAreaInput>
             </FormGroup>
-            <Button type="submit" color="green">
-              GÜNCELLE
+            <Button style={{marginLeft:"295pt"}} type="submit" color="green">
+              EKLE
             </Button>
           </Form>
         </Segment>

@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import CurriculumVitaeService from "../../services/curriculumVitaeService";
-import { Card, Header, Icon, Image, Segment, Button } from "semantic-ui-react";
-
+import {
+  Card,
+  Header,
+  Icon,
+  Image,
+  Segment,
+  Button,
+  Modal,
+} from "semantic-ui-react";
+import DeleteCurriculumVitaeModal from "../../modals/CV/delete/DeleteCurriculumVitaeModal";
+import AddCurriculumVitaeModal from "../../modals/CV/add/AddCurriculumVitaeModal";
 export default function CurriculumVitaeList() {
   let { jobseekerId } = useParams();
 
   const [curriculumVitaes, setCurriculumVitaes] = useState([]);
+
+  const [openAddCurriculumVitae, setOpenAddCurriculumVitae] = useState(false);
+  
 
   useEffect(() => {
     let curriculumVitaeService = new CurriculumVitaeService();
@@ -21,33 +33,19 @@ export default function CurriculumVitaeList() {
         <Header className="app" as="h2" icon textAlign="left">
           <Header.Content>
             ÖZGEÇMİŞLER{" "}
-            <Button
-              as={NavLink}
-              to={`/jobseeker/${3}/curriculumvitae/add`}
-              floated="right"
-              color="green"
-            >
-              YENİ OLUŞTUR
-            </Button>
+            <AddCurriculumVitaeModal jobseekerId={3}></AddCurriculumVitaeModal>
           </Header.Content>
         </Header>
         <Card.Group>
           {curriculumVitaes.map((curriculumVitae) => (
-            <Card
-              as={NavLink}
-              to={`/jobseeker/${3}/curriculumvitae/${
-                curriculumVitae.curriculumVitaeId
-              }`}
-              color="green"
-              fluid
-            >
+            <Card color="green" fluid>
               <Card.Content>
                 {!curriculumVitae.jobseeker.image ? (
                   <Image
                     circular
                     floated="left"
                     size="tiny"
-                    src="https://aday-spage.mncdn.com/Knet_img_bag-with-gray-bg.832c700.svg?v=p0611211353224"
+                    src="https://www.insidesport.com/images/nophoto.png"
                   ></Image>
                 ) : (
                   <Image
@@ -58,11 +56,19 @@ export default function CurriculumVitaeList() {
                   ></Image>
                 )}
 
-                <Card.Header>
+                <Card.Header
+                  as={NavLink}
+                  to={`/jobseeker/${3}/curriculumvitae/${
+                    curriculumVitae.curriculumVitaeId
+                  }`}
+                >
                   <Icon name="pen square" />
                   Düzenlemek İçin Tıklayın
                 </Card.Header>
-                <Card.Description></Card.Description>
+                <Card.Meta>
+                  <DeleteCurriculumVitaeModal curriculumVitaeId={curriculumVitae.curriculumVitaeId}></DeleteCurriculumVitaeModal>
+                </Card.Meta>
+                <Card.Meta>Oluşturulma Tarihi: {curriculumVitae.createdDate}</Card.Meta>
               </Card.Content>
             </Card>
           ))}

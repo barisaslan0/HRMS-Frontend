@@ -1,26 +1,24 @@
 import React from "react";
-import ForeignLanguageService from "../../services/foreignLanguageService";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import { toast } from "react-toastify";
-import HrmsInput from "../../utilities/customFormControls/HrmsInput";
+import AddressService from "../../../../services/addressService";
+import HrmsInput from "../../../../utilities/customFormControls/HrmsInput";
 
-export default function AddForeignLanguage({ curriculumVitaeId }) {
-  let foreignLanguageService = new ForeignLanguageService();
-
+export default function AddAddress({ curriculumVitaeId }) {
+  let addressService = new AddressService();
   const initialValues = {
-    language: "",
-    level: "",
+    linkedinAddress: "",
+    githubAddress: "",
   };
   const onSubmit = (values) => {
     values.curriculumVitaeId = curriculumVitaeId;
     console.log(values);
-    foreignLanguageService
+    addressService
       .add(values)
       .then(
         (result) => console.log(result.data.data),
-        toast.success("Yabancı Dil Eklendi"),
+        toast.success("Adresler Eklendi"),
         window.location.reload()
       );
   };
@@ -28,25 +26,29 @@ export default function AddForeignLanguage({ curriculumVitaeId }) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsInput
-                name="language"
+                icon="linkedin"
+                iconPosition="left"
+                name="linkedinAddress"
                 type="text"
-                label="Yabancı Dil"
-                placeholder="Yabancı Dil"
+                label="LinkedIn Adresi"
+                placeholder="LinkedIn adresi"
               ></HrmsInput>
             </FormGroup>
             <FormGroup widths="equal">
               <HrmsInput
-                name="level"
+                icon="github"
+                iconPosition="left"
+                name="githubAddress"
                 type="text"
-                label="Seviye"
-                placeholder="Seviye"
+                label="GitHub Adresi"
+                placeholder="GitHub adresi"
               ></HrmsInput>
             </FormGroup>
-            <Button type="submit" color="green">
+            <Button style={{marginLeft:"295pt"}} type="submit" color="green">
               EKLE
             </Button>
           </Form>
