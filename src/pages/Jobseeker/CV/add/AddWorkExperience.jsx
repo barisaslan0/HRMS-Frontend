@@ -51,7 +51,7 @@ export default function AddWorkExperience({ curriculumVitaeId }) {
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ setFieldValue }) => (
-          <Segment color="red">
+          <Segment color="green">
             <Form className="ui form">
               <FormGroup widths="equal">
                 <HrmsInput
@@ -84,7 +84,7 @@ export default function AddWorkExperience({ curriculumVitaeId }) {
                   label="Bitiş Tarihi"
                 ></HrmsInput>
               </FormGroup>
-              <Button type="submit" color="green">
+              <Button style={{marginLeft:"295pt"}} type="submit" color="green">
                 EKLE
               </Button>
             </Form>

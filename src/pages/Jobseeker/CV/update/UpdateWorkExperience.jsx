@@ -49,7 +49,7 @@ export default function UpdateWorkExperience({workExperienceId,workplaceName,job
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ setFieldValue }) => (
-          <Segment color="red">
+          <Segment color="green">
             <Form className="ui form">
               <FormGroup widths="equal">
                 <HrmsInput

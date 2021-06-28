@@ -1,5 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import {
   Container,
   Dropdown,
@@ -10,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import logo from "../images/logo.png";
 
-export default function SignedInJobseeker({ signOutJobseeker }) {
+export default function SignedInSystemPersonnal({ signOut }) {
   return (
     <div>
       <Menu color="red" inverted fixed="top" size="large">
@@ -21,15 +23,13 @@ export default function SignedInJobseeker({ signOutJobseeker }) {
           <Menu.Item as={NavLink} to="/jobpostings">
             İş İlanları
           </Menu.Item>
-          <Menu.Item as={NavLink} to={`/jobseeker/${3}/curriculumvitaes`}>
-            Özgeçmişler
+          <Menu.Item as={NavLink} to="/confirmjobposting">
+            Bildirimler
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item>
               <Image
-                src={
-                  "https://yt3.ggpht.com/DTHNfg3dNsf85L_9BgIPpQ6JgI8xq516Em7Hmocm_dR9_msRsxotMvEfzx62BuUteBUZTGy8Xg=s108-c-k-c0x00ffffff-no-rj"
-                }
+                src="https://www.uclg-planning.org/sites/default/files/styles/featured_home_left/public/no-user-image-square.jpg?itok=PANMBJF-"
                 size="mini"
                 circular
               ></Image>
@@ -39,26 +39,14 @@ export default function SignedInJobseeker({ signOutJobseeker }) {
                 style={{ marginRight: "0.5em" }}
               >
                 <Dropdown.Menu>
-                  <Dropdown.Item as={NavLink} to={`/jobseeker/${3}/profile`}>
+                  <Dropdown.Item as={NavLink} to={`/systempersonnal/${14}/profile`}>
                     <Icon name="user" /> Profil
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    as={NavLink}
-                    to={`/jobseeker/${3}/curriculumvitaes`}
-                  >
-                    <Icon name="file alternate" /> Özgeçmişler
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    as={NavLink}
-                    to={`/jobseeker/${3}/favorites`}
-                  >
-                    <Icon name="heart" /> Favoriler
                   </Dropdown.Item>
                   <Dropdown.Item as={NavLink} to={`/jobseeker/${3}/settings`}>
                     <Icon name="setting" /> Ayarlar
                   </Dropdown.Item>
                   <Divider />
-                  <Dropdown.Item onClick={signOutJobseeker}>
+                  <Dropdown.Item onClick={signOut}>
                     <Icon color="red" name="log out" /> Çıkış
                   </Dropdown.Item>
                 </Dropdown.Menu>

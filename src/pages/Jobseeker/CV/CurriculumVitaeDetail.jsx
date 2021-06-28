@@ -1,5 +1,5 @@
 import React from "react";
-import CurriculumVitaeService from "../../services/curriculumVitaeService";
+import CurriculumVitaeService from "../../../services/curriculumVitaeService";
 import {
   Table,
   Button,
@@ -14,25 +14,25 @@ import {
 } from "semantic-ui-react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import AddAddressModal from "../../modals/CV/add/AddAddressModal";
-import UpdateAddressModal from "../../modals/CV/update/UpdateAddressModal";
-import DeleteAddressModal from "../../modals/CV/delete/DeleteAddressModal";
-import AddCoverLetterModal from "../../modals/CV/add/AddCoverLetterModal";
-import UpdateCoverLetterModal from "../../modals/CV/update/UpdateCoverLetterModal";
-import DeleteCoverLetterModal from "../../modals/CV/delete/DeleteCoverLetterModal";
-import AddWorkExperienceModal from "../../modals/CV/add/AddWorkExperienceModal";
-import UpdateWorkExperienceModal from "../../modals/CV/update/UpdateWorkExperienceModal";
-import DeleteWokrExperienceModal from "../../modals/CV/delete/DeleteWokrExperienceModal";
-import AddEducationModal from "../../modals/CV/add/AddEducationModal";
-import UpdateEducationModal from "../../modals/CV/update/UpdateEducationModal";
-import DeleteEducationModal from "../../modals/CV/delete/DeleteEducationModal";
-import AddForeignLanguageModal from "../../modals/CV/add/AddForeignLanguageModal";
-import UpdateForeignLanguageModal from "../../modals/CV/update/UpdateForeignLanguageModal";
-import DeleteForeignLanguageModal from "../../modals/CV/delete/DeleteForeignLanguageModal";
-import AddTechnologyModal from "../../modals/CV/add/AddTechnologyModal";
-import UpdateTechnologyModal from "../../modals/CV/update/UpdateTechnologyModal";
-import DeleteTechnologyModal from "../../modals/CV/delete/DeleteTechnologyModal";
-import DeleteCurriculumVitaeModal from "../../modals/CV/delete/DeleteCurriculumVitaeModal";
+import AddAccountModal from "../../../modals/CV/add/AddAccountModal";
+import UpdateAccountModal from "../../../modals/CV/update/UpdateAccountModal";
+import DeleteAccountModal from "../../../modals/CV/delete/DeleteAccountModal";
+import AddCoverLetterModal from "../../../modals/CV/add/AddCoverLetterModal";
+import UpdateCoverLetterModal from "../../../modals/CV/update/UpdateCoverLetterModal";
+import DeleteCoverLetterModal from "../../../modals/CV/delete/DeleteCoverLetterModal";
+import AddWorkExperienceModal from "../../../modals/CV/add/AddWorkExperienceModal";
+import UpdateWorkExperienceModal from "../../../modals/CV/update/UpdateWorkExperienceModal";
+import DeleteWokrExperienceModal from "../../../modals/CV/delete/DeleteWokrExperienceModal";
+import AddEducationModal from "../../../modals/CV/add/AddEducationModal";
+import UpdateEducationModal from "../../../modals/CV/update/UpdateEducationModal";
+import DeleteEducationModal from "../../../modals/CV/delete/DeleteEducationModal";
+import AddForeignLanguageModal from "../../../modals/CV/add/AddForeignLanguageModal";
+import UpdateForeignLanguageModal from "../../../modals/CV/update/UpdateForeignLanguageModal";
+import DeleteForeignLanguageModal from "../../../modals/CV/delete/DeleteForeignLanguageModal";
+import AddTechnologyModal from "../../../modals/CV/add/AddTechnologyModal";
+import UpdateTechnologyModal from "../../../modals/CV/update/UpdateTechnologyModal";
+import DeleteTechnologyModal from "../../../modals/CV/delete/DeleteTechnologyModal";
+import DeleteCurriculumVitaeModal from "../../../modals/CV/delete/DeleteCurriculumVitaeModal";
 
 export default function CurriculumVitaeDetail() {
   let { curriculumVitaeId } = useParams();
@@ -115,15 +115,15 @@ export default function CurriculumVitaeDetail() {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          {!curriculumVitae.address ? (
+          {!curriculumVitae.account ? (
             <Table color="green" celled striped>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell colSpan="2">
-                    ADRESLER
-                    <AddAddressModal
+                    HESAPLAR
+                    <AddAccountModal
                       curriculumVitaeId={curriculumVitae.curriculumVitaeId}
-                    ></AddAddressModal>
+                    ></AddAccountModal>
                   </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -135,22 +135,22 @@ export default function CurriculumVitaeDetail() {
                   <Table.HeaderCell colSpan="2">
                     <Grid>
                       <Grid.Row>
-                        <Grid.Column width={12}>ADRESLER</Grid.Column>
+                        <Grid.Column width={12}>HESAPLAR</Grid.Column>
                         <Grid.Column width={2}>
-                          <UpdateAddressModal
-                            addressId={curriculumVitae.address.addressId}
-                            linkedinAddress={
-                              curriculumVitae.address.linkedinAddress
+                          <UpdateAccountModal
+                            accountId={curriculumVitae.account.accountId}
+                            linkedinAccount={
+                              curriculumVitae.account.linkedinAccount
                             }
-                            githubAddress={
-                              curriculumVitae.address.githubAddress
+                            githubAccount={
+                              curriculumVitae.account.githubAccount
                             }
-                          ></UpdateAddressModal>
+                          ></UpdateAccountModal>
                         </Grid.Column>
                         <Grid.Column width={2}>
-                          <DeleteAddressModal
-                            addressId={curriculumVitae.address.addressId}
-                          ></DeleteAddressModal>
+                          <DeleteAccountModal
+                            accountId={curriculumVitae.account.accountId}
+                          ></DeleteAccountModal>
                         </Grid.Column>
                       </Grid.Row>
                     </Grid>
@@ -161,19 +161,29 @@ export default function CurriculumVitaeDetail() {
                 <Table.Row>
                   <Table.Cell collapsing>
                     <Icon name="linkedin" />
-                    LinkedIn Adresi
+                    LinkedIn Hesabı
                   </Table.Cell>
                   <Table.Cell>
-                    {curriculumVitae.address.linkedinAddress}
+                    <a
+                      target="_blank"
+                      href={curriculumVitae.account.linkedinAccount}
+                    >
+                      {curriculumVitae.account.linkedinAccount}
+                    </a>
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell>
                     <Icon name="github" />
-                    GitHub Adresi
+                    GitHub Hesabı
                   </Table.Cell>
                   <Table.Cell>
-                    {curriculumVitae.address.githubAddress}
+                    <a
+                      target="_blank"
+                      href={curriculumVitae.account.githubAccount}
+                    >
+                      {curriculumVitae.account.githubAccount}
+                    </a>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
@@ -335,6 +345,9 @@ export default function CurriculumVitaeDetail() {
                     <UpdateEducationModal
                       educationId={education.educationId}
                       schoolName={education.schoolName}
+                      department={education.department}
+                      startDateOfSchool={education.startDateOfSchool}
+                      endDateOfSchool={education.endDateOfSchool}
                     ></UpdateEducationModal>
                     <DeleteEducationModal
                       educationId={education.educationId}

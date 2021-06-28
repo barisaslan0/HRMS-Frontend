@@ -13,7 +13,7 @@ export default function DeleteTechnology({ technologyId }) {
   };
   return (
     <div>
-      <Message error>Teknoloji silinsin mi?</Message>
+      <Message size="massive" error>Yetenek silinsin mi?</Message>
       <Button
         style={{ marginBottom: "10pt" }}
         floated="right"

@@ -28,7 +28,7 @@ export default function UpdateForeignLanguage({foreignLanguageId,language,level}
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsInput
@@ -46,7 +46,7 @@ export default function UpdateForeignLanguage({foreignLanguageId,language,level}
                 placeholder="Seviye"
               ></HrmsInput>
             </FormGroup>
-            <Button type="submit" color="green">
+            <Button style={{marginLeft:"266pt"}} type="submit" color="green">
               GÜNCELLE
             </Button>
           </Form>

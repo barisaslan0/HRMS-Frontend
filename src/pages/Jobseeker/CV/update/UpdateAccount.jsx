@@ -2,27 +2,31 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { FormGroup, Button, Segment } from "semantic-ui-react";
 import { toast } from "react-toastify";
-import AddressService from "../../../../services/addressService";
+import AddressService from "../../../../services/accountService";
 import HrmsInput from "../../../../utilities/customFormControls/HrmsInput";
+import AccountService from "../../../../services/accountService";
 
-export default function AddAddress({ curriculumVitaeId }) {
-  let addressService = new AddressService();
+export default function UpdateAccount({
+  accountId,
+  linkedinAccount,
+  githubAccount,
+}) {
+  let accountService = new AccountService();
   const initialValues = {
-    linkedinAddress: "",
-    githubAddress: "",
+    linkedinAccount: linkedinAccount,
+    githubAccount: githubAccount,
   };
   const onSubmit = (values) => {
-    values.curriculumVitaeId = curriculumVitaeId;
+    values.accountId = accountId;
     console.log(values);
-    addressService
-      .add(values)
+    accountService
+      .update(values)
       .then(
         (result) => console.log(result.data.data),
-        toast.success("Adresler Eklendi"),
+        toast.success("Hesaplar Güncellendi"),
         window.location.reload()
       );
   };
-
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -32,24 +36,24 @@ export default function AddAddress({ curriculumVitaeId }) {
               <HrmsInput
                 icon="linkedin"
                 iconPosition="left"
-                name="linkedinAddress"
+                name="linkedinAccount"
                 type="text"
-                label="LinkedIn Adresi"
-                placeholder="LinkedIn adresi"
+                label="LinkedIn Hesabı"
+                placeholder="LinkedIn hesabı"
               ></HrmsInput>
             </FormGroup>
             <FormGroup widths="equal">
               <HrmsInput
                 icon="github"
                 iconPosition="left"
-                name="githubAddress"
+                name="githubAccount"
                 type="text"
-                label="GitHub Adresi"
-                placeholder="GitHub adresi"
+                label="GitHub Hesabı"
+                placeholder="GitHub hesabı"
               ></HrmsInput>
             </FormGroup>
-            <Button style={{marginLeft:"295pt"}} type="submit" color="green">
-              EKLE
+            <Button style={{marginLeft:"265pt"}} type="submit" color="green">
+              GÜNCELLE
             </Button>
           </Form>
         </Segment>

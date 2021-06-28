@@ -13,7 +13,7 @@ export default function DeleteForeignLanguage({foreignLanguageId}) {
   };
   return (
     <div>
-      <Message error>Yabancı dil silinsin mi?</Message>
+      <Message size="massive" error>Yabancı dil silinsin mi?</Message>
       <Button
         style={{ marginBottom: "10pt" }}
         floated="right"

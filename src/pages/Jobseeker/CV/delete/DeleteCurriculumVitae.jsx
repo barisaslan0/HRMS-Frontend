@@ -20,7 +20,7 @@ export default function DeleteCurriculumVitae({ curriculumVitaeId }) {
   };
   return (
     <div>
-      <Message error>Özgeçmiş silmek istiyor musunuz?</Message>
+      <Message size="massive" error>Özgeçmişi silmek istiyor musunuz?</Message>
       <Button
         style={{ marginBottom: "10pt" }}
         inverted

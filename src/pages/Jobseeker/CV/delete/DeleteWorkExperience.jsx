@@ -9,11 +9,11 @@ export default function DeleteWorkExperience({workExperienceId}) {
   const deleteWorkExperience = (workExperienceId) => {
     workExperienceService
       .delete(workExperienceId)
-      .then(toast.success("Eğitim Bilgisi Silindi"), window.location.reload());
+      .then(toast.success("İş Deneyimi Silindi"), window.location.reload());
   };
   return (
     <div>
-      <Message error>Eğitim bilgisi silinsin mi?</Message>
+      <Message size="massive" error>İş deneyimi silinsin mi?</Message>
       <Button
         style={{ marginBottom: "10pt" }}
         floated="right"

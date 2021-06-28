@@ -27,7 +27,7 @@ export default function AddForeignLanguage({ curriculumVitaeId }) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsInput

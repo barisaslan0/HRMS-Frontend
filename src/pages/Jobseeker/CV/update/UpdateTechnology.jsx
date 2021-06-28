@@ -35,7 +35,7 @@ export default function UpdateTechnology({technologyId,technologyName}) {
                 placeholder="Yetenek"
               ></HrmsInput>
             </FormGroup>
-            <Button type="submit" color="green">
+            <Button style={{marginLeft:"266pt"}} type="submit" color="green">
               GÜNCELLE
             </Button>
           </Form>

@@ -13,46 +13,78 @@ import HomePage from "./pages/HomePage";
 import { Switch, useHistory } from "react-router-dom";
 import RegisterJobseeker from "./pages/Jobseeker/RegisterJobseeker";
 import LoginJobseeker from "./pages/Jobseeker/LoginJobseeker";
-import RegisterEmployer from "./pages/RegisterEmployer";
-import LoginEmployer from "./pages/LoginEmployer";
+import RegisterEmployer from "./pages/Employer/RegisterEmployer";
+import LoginEmployer from "./pages/Employer/LoginEmployer";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
 import SignedInJobseeker from "./layouts/SignedInJobseeker";
-import JobseekerDashboard from "./layouts/JobseekerDashboard";
-import CurriculumVitaeList from "./pages/Jobseeker/CurriculumVitaeList";
-import Settings from "./pages/Settings";
-import Profile from "./pages/Profile";
-import { Router } from "@material-ui/icons";
-import CurriculumVitaeDetail from "./pages/Jobseeker/CurriculumVitaeDetail";
+import CurriculumVitaeList from "./pages/Jobseeker/CV/CurriculumVitaeList";
+import Settings from "./pages/Jobseeker/SettingsJobseeker";
+import Profile from "./pages/Jobseeker/ProfileJobseeker";
+import CurriculumVitaeDetail from "./pages/Jobseeker/CV/CurriculumVitaeDetail";
+import LoginSystemPersonnal from "./pages/SystemPersonnal/LoginSystemPersonnal";
+import SignedInSystemPersonnal from "./layouts/SignedInSystemPersonnal";
+import ProfileJobseeker from "./pages/Jobseeker/ProfileJobseeker";
+import SettingsJobseeker from "./pages/Jobseeker/SettingsJobseeker";
+import ProfileSystemPersonnal from "./pages/SystemPersonnal/ProfileSystemPersonnal";
+import FavoriteList from "./pages/Jobseeker/Favorite/FavoriteList";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticatedJobseeker, setIsAuthenticatedJobseeker] =
+    useState(false);
+
+  // const [isAuthenticatedSystemPersonnal, setIsAuthenticatedSystemPersonnal] =
+  //   useState(false);
 
   const history = useHistory();
 
-  function handleSignIn(params) {
-    setIsAuthenticated(true);
+  function handleSignInJobseeker() {
+    setIsAuthenticatedJobseeker(true);
     history.push("/jobpostings");
   }
 
-  function handleSignOut(params) {
-    setIsAuthenticated(false);
+  function handleSignOutJobseeker() {
+    setIsAuthenticatedJobseeker(false);
     history.push("/home");
   }
+
+  // function handleSignInSystemPersonnal() {
+  //   setIsAuthenticatedSystemPersonnal(true);
+  //   history.push("/jobpostings");
+  // }
+
+  // function handleSignOutSystemPersonnal() {
+  //   setIsAuthenticatedSystemPersonnal(false);
+  //   history.push("/home");
+  // }
   return (
     <div className="app">
       <ToastContainer position="top-right" />
       <Container className="main">
-        {isAuthenticated ? (
-          <SignedInJobseeker signOut={handleSignOut}></SignedInJobseeker>
+        {isAuthenticatedJobseeker ? (
+          <SignedInJobseeker
+            signOutJobseeker={handleSignOutJobseeker}
+          ></SignedInJobseeker>
         ) : (
           <Navi></Navi>
         )}
+        {/* {isAuthenticatedSystemPersonnal ? (
+          <SignedInSystemPersonnal
+            signOut={handleSignOutSystemPersonnal}
+          ></SignedInSystemPersonnal>
+        ) : (
+          <Navi></Navi>
+        )} */}
         <Switch>
           <Route
             exact
+            path={`/systempersonnal/:userId/profile`}
+            component={ProfileSystemPersonnal}
+          ></Route>
+          <Route
+            exact
             path={`/jobseeker/:jobseekerId/profile`}
-            component={Profile}
+            component={ProfileJobseeker}
           ></Route>
           <Route
             exact
@@ -61,24 +93,37 @@ function App() {
           ></Route>
           <Route
             exact
-            path={`/jobseeker/:jobseekerId/settings`}
-            component={Settings}
+            path={`/jobseeker/:jobseekerId/favorites`}
+            component={FavoriteList}
           ></Route>
-          <Route exact path="/jobseeker/:jobseekerId/curriculumvitae/:curriculumVitaeId" component={CurriculumVitaeDetail}></Route>
+          <Route
+            exact
+            path={`/jobseeker/:jobseekerId/settings`}
+            component={SettingsJobseeker}
+          ></Route>
+          <Route
+            exact
+            path="/jobseeker/:jobseekerId/curriculumvitae/:curriculumVitaeId"
+            component={CurriculumVitaeDetail}
+          ></Route>
           <Route exact path="/" component={HomePage}></Route>
           <Route exact path="/home" component={HomePage}></Route>
           <Route
             exact
             path="/registerjobseeker"
             component={() => (
-              <RegisterJobseeker signIn={handleSignIn}></RegisterJobseeker>
+              <RegisterJobseeker
+                signInJobseeker={handleSignInJobseeker}
+              ></RegisterJobseeker>
             )}
           ></Route>
           <Route
             exact
             path="/loginjobseeker"
             component={() => (
-              <LoginJobseeker signIn={handleSignIn}></LoginJobseeker>
+              <LoginJobseeker
+                signInJobseeker={handleSignInJobseeker}
+              ></LoginJobseeker>
             )}
           ></Route>
           <Route
@@ -87,6 +132,15 @@ function App() {
             component={RegisterEmployer}
           ></Route>
           <Route exact path="/loginemployer" component={LoginEmployer}></Route>
+          <Route
+            exact
+            path="/loginsystempersonnal"
+            component={() => (
+              <LoginSystemPersonnal
+                // signIn={handleSignInSystemPersonnal}
+              ></LoginSystemPersonnal>
+            )}
+          ></Route>
           <Route exact path="/jobpostings" component={Dashboard}></Route>
           <Route
             exact

@@ -35,14 +35,14 @@ export default function UpdateEducation({
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsInput
                 name="schoolName"
                 type="text"
                 label="Okul Adı"
-                placeholder="Okul Adı"
+                placeholder="Okul adı"
               ></HrmsInput>
             </FormGroup>
             <FormGroup widths="equal">
@@ -65,8 +65,8 @@ export default function UpdateEducation({
                 label="Bitiş Tarihi"
               ></HrmsInput>
             </FormGroup>
-            <Button type="submit" color="green">
-              EKLE
+            <Button style={{marginLeft:"266pt"}} type="submit" color="green">
+              GÜNCELLE
             </Button>
           </Form>
         </Segment>

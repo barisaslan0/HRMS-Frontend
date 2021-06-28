@@ -3,11 +3,11 @@ import AddCurriculumVitae from "../../../pages/Jobseeker/CV/add/AddCurriculumVit
 import { Modal, Button } from "semantic-ui-react";
 import { useState } from "react";
 
-
-export default function AddCurriculumVitaeModal({jobseekerId}) {
-    const [openAddCurriculumVitae, setOpenAddCurriculumVitae] = useState(false);
+export default function AddCurriculumVitaeModal({ jobseekerId }) {
+  const [openAddCurriculumVitae, setOpenAddCurriculumVitae] = useState(false);
   return (
     <Modal
+      size="small"
       closeIcon
       onClose={() => setOpenAddCurriculumVitae(false)}
       onOpen={() => setOpenAddCurriculumVitae(true)}

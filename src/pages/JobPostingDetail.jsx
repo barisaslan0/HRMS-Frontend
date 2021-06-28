@@ -12,7 +12,7 @@ export default function JobPostingDetail() {
     let jobPostingService = new JobPostingService();
     jobPostingService
       .getByJobPostingId(jobPostingId)
-      .then((result) => setJobPostings([result.data.data]));
+      .then(result => setJobPostings([result.data.data]));
   }, []);
 
   return (

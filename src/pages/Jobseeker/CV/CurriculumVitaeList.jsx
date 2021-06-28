@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import CurriculumVitaeService from "../../services/curriculumVitaeService";
+import CurriculumVitaeService from "../../../services/curriculumVitaeService";
 import {
   Card,
   Header,
@@ -10,16 +10,13 @@ import {
   Button,
   Modal,
 } from "semantic-ui-react";
-import DeleteCurriculumVitaeModal from "../../modals/CV/delete/DeleteCurriculumVitaeModal";
-import AddCurriculumVitaeModal from "../../modals/CV/add/AddCurriculumVitaeModal";
+import DeleteCurriculumVitaeModal from "../../../modals/CV/delete/DeleteCurriculumVitaeModal";
+import AddCurriculumVitaeModal from "../../../modals/CV/add/AddCurriculumVitaeModal";
 export default function CurriculumVitaeList() {
   let { jobseekerId } = useParams();
 
   const [curriculumVitaes, setCurriculumVitaes] = useState([]);
-
-  const [openAddCurriculumVitae, setOpenAddCurriculumVitae] = useState(false);
   
-
   useEffect(() => {
     let curriculumVitaeService = new CurriculumVitaeService();
     curriculumVitaeService

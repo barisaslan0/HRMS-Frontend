@@ -13,7 +13,7 @@ export default function DeleteEducation({educationId}) {
   };
   return (
     <div>
-      <Message error>Eğitim bilgisi silinsin mi?</Message>
+      <Message size="massive" error>Eğitim bilgisi silinsin mi?</Message>
       <Button
         style={{ marginBottom: "10pt" }}
         floated="right"

@@ -1,17 +1,17 @@
 import React from "react";
-import DeleteAddress from "../../../pages/Jobseeker/CV/delete/DeleteAddress";
+import DeleteAccount from "../../../pages/Jobseeker/CV/delete/DeleteAccount";
 import { Modal, Button, Icon } from "semantic-ui-react";
 import { useState } from "react";
 
-export default function DeleteAddressModal({ addressId }) {
-  const [openDeleteAddress, setOpenDeleteAddress] = useState(false);
+export default function DeleteAccountModal({ accountId }) {
+  const [openDeleteAccount, setOpenDeleteAccount] = useState(false);
   return (
       <Modal
         size="mini"
         closeIcon
-        onClose={() => setOpenDeleteAddress(false)}
-        onOpen={() => setOpenDeleteAddress(true)}
-        open={openDeleteAddress}
+        onClose={() => setOpenDeleteAccount(false)}
+        onOpen={() => setOpenDeleteAccount(true)}
+        open={openDeleteAccount}
         trigger={
           <Button color="red" animated="fade">
             <Button.Content visible>
@@ -21,10 +21,10 @@ export default function DeleteAddressModal({ addressId }) {
           </Button>
         }
       >
-        <Modal.Header>Adresleri Silme</Modal.Header>
+        <Modal.Header>Hesapları Silme</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <DeleteAddress addressId={addressId}></DeleteAddress>
+            <DeleteAccount accountId={accountId}></DeleteAccount>
           </Modal.Description>
         </Modal.Content>
       </Modal>

@@ -13,7 +13,7 @@ import logo from "../../images/logo-kırmızı.png";
 import register from "../../images/register.png";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function RegisterJobseeker({signIn}) {
+export default function RegisterJobseeker({signInJobseeker}) {
   return (
     <div>
       <Grid
@@ -97,7 +97,7 @@ export default function RegisterJobseeker({signIn}) {
                   type="password"
                 />
 
-                <Button onClick={signIn} primary fluid size="large">
+                <Button onClick={signInJobseeker} primary fluid size="large">
                   KAYIT OL
                 </Button>
               </Segment>

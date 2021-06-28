@@ -24,7 +24,7 @@ export default function AddTechnology({curriculumVitaeId}) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsInput
@@ -34,7 +34,7 @@ export default function AddTechnology({curriculumVitaeId}) {
                 placeholder="Yetenek"
               ></HrmsInput>
             </FormGroup>
-            <Button type="submit" color="green">
+            <Button style={{marginLeft:"295pt"}} type="submit" color="green">
               EKLE
             </Button>
           </Form>

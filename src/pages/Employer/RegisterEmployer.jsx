@@ -9,7 +9,7 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import logo from "../images/logo-kırmızı.png";
+import logo from "../../images/logo-kırmızı.png";
 
 export default function RegisterEmployer() {
   return (

@@ -13,7 +13,7 @@ export default function DeleteCoverLetter({coverLetterId}) {
   };
   return (
     <div>
-      <Message error>Ön yazı silinsin mi?</Message>
+      <Message size="massive" error>Ön yazı silinsin mi?</Message>
       <Button
         style={{ marginBottom: "10pt" }}
         floated="right"

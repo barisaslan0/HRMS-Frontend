@@ -26,7 +26,7 @@ export default function AddEducation({curriculumVitaeId}) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-          <Segment color="red">
+          <Segment color="green">
             <Form className="ui form">
               <FormGroup widths="equal">
                 <HrmsInput
@@ -56,7 +56,7 @@ export default function AddEducation({curriculumVitaeId}) {
                   label="Bitiş Tarihi"
                 ></HrmsInput>
               </FormGroup>
-              <Button type="submit" color="green">
+              <Button style={{marginLeft:"295pt"}} type="submit" color="green">
                 EKLE
               </Button>
             </Form>

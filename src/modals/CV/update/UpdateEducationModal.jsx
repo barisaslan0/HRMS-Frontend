@@ -3,13 +3,13 @@ import UpdateEducation from "../../../pages/Jobseeker/CV/update/UpdateEducation"
 import { Modal, Button, Icon } from "semantic-ui-react";
 import { useState } from "react";
 
-export default function UpdateEducationModal(
+export default function UpdateEducationModal({
   educationId,
   schoolName,
   department,
   startDateOfSchool,
-  endDateOfSchool
-) {
+  endDateOfSchool,
+}) {
   const [openUpdateEducation, setOpenUpdateEducation] = useState(false);
   return (
     <Modal
@@ -19,7 +19,7 @@ export default function UpdateEducationModal(
       onOpen={() => setOpenUpdateEducation(true)}
       open={openUpdateEducation}
       trigger={
-        <Button style={{marginTop:"10pt"}} animated="fade">
+        <Button style={{ marginTop: "10pt" }} animated="fade">
           <Button.Content visible>
             <Icon name="pencil" />
           </Button.Content>

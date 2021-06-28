@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Container, Dropdown, Menu, Image } from "semantic-ui-react";
+import { Button, Container, Dropdown, Menu, Image ,Icon} from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import logo from "../images/logo.png";
 
-export default function Navi({signIn}) {
+export default function Navi() {
   return (
     <div>
       <Menu color="red" inverted fixed="top" size="large">
@@ -16,9 +16,6 @@ export default function Navi({signIn}) {
           </Menu.Item>
           <Menu.Item as={NavLink} to="/jobpostings">
             İş İlanları
-          </Menu.Item>
-          <Menu.Item as={NavLink} to="/confirmjobposting">
-            Bildirimler
           </Menu.Item>
 
           <Menu.Menu position="right">
@@ -51,12 +48,13 @@ export default function Navi({signIn}) {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Button
-                color="green"
-                as={NavLink}
-                to="/jobpostings/add"
-              >
+              <Button color="green" as={NavLink} to="/jobpostings/add">
                 İLAN YAYINLA
+              </Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button as={NavLink} to="/loginsystempersonnal" icon>
+                <Icon name="world" />
               </Button>
             </Menu.Item>
           </Menu.Menu>

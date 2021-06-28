@@ -12,7 +12,7 @@ import {
 import logo from "../../images/logo-kırmızı.png";
 import login from "../../images/login.jpg"
 
-export default function LoginJobseeker({signIn}) {
+export default function LoginJobseeker({signInJobseeker}) {
   return (
     <div>
       <Grid textAlign="center" verticalAlign="middle">
@@ -44,7 +44,7 @@ export default function LoginJobseeker({signIn}) {
                   placeholder="Şifre"
                   type="password"
                 />
-                <Button onClick={signIn} primary fluid size="large">
+                <Button onClick={signInJobseeker} primary fluid size="large">
                   GİRİŞ YAP
                 </Button>
               </Segment>

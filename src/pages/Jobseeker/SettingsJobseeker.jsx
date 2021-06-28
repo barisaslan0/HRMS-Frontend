@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Profile() {
+export default function SettingsJobseeker() {
     return (
         <div>
-            PROFİL
+            AYARLAR
         </div>
     )
 }

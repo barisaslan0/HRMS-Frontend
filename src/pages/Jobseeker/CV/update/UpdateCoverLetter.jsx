@@ -26,7 +26,7 @@ export default function UpdateCoverLetter({ coverLetterId, coverLetter }) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Segment color="red">
+        <Segment color="green">
           <Form className="ui form">
             <FormGroup widths="equal">
               <HrmsTextAreaInput
