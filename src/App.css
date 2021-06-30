@@ -29,3 +29,8 @@
   background-repeat: no-repeat;
   background-position: top left;
 }
+
+.fixed {
+  width: 260px;
+  position: fixed;
+}

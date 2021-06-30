@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default class JobPostingService{
-    getByConfirmAndActiveTrue(){
-        return axios.get("http://localhost:8080/api/jobpostings/getbyisconfirmandisactive?isActive=true&isConfirm=true")
+    getByConfirmAndActiveTrue(pageNo,pageSize){
+        return axios.get("http://localhost:8080/api/jobpostings/getbyisconfirmandisactive?isActive=true&isConfirm=true&pageNo="+pageNo+"&pageSize="+pageSize)
     }
 
     getByConfirmFalse(){

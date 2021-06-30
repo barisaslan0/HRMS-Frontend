@@ -52,7 +52,7 @@ export default function SignedInJobseeker({ signOutJobseeker }) {
                     as={NavLink}
                     to={`/jobseeker/${3}/favorites`}
                   >
-                    <Icon name="heart" /> Favoriler
+                    <Icon color="red" name="heart" /> Favoriler
                   </Dropdown.Item>
                   <Dropdown.Item as={NavLink} to={`/jobseeker/${3}/settings`}>
                     <Icon name="setting" /> Ayarlar

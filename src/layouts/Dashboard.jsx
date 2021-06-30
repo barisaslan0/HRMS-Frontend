@@ -12,13 +12,15 @@ export default function Dashboard() {
       <Grid divided>
         <Grid.Row>
           <Grid.Column width={4}>
-            <JobPositions></JobPositions>
-            <Cities></Cities>
-            <WorkTypes></WorkTypes>
-            <WorkTimes></WorkTimes>
-            <Button primary style={{ marginTop: "15pt" }}>
-              UYGULA
-            </Button>
+            <div className="fixed">
+              <JobPositions></JobPositions>
+              <Cities></Cities>
+              <WorkTypes></WorkTypes>
+              <WorkTimes></WorkTimes>
+              <Button fluid primary style={{ marginTop: "15pt" }}>
+                FİLTRELE
+              </Button>
+            </div>
           </Grid.Column>
           <Grid.Column width={12}>
             <JobPostingList></JobPostingList>

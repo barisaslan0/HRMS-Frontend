@@ -14,7 +14,7 @@ export default function Navi() {
           <Menu.Item as={NavLink} to="/home">
             Ana Sayfa
           </Menu.Item>
-          <Menu.Item as={NavLink} to="/jobpostings">
+          <Menu.Item as={NavLink} to={"jobpostings"}>
             İş İlanları
           </Menu.Item>
 

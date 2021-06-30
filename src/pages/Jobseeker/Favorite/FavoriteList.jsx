@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import FavoriteService from "../../../services/favoriteService";
 import { Card, Header, Icon, Image, Grid } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import { GridOnSharp } from "@material-ui/icons";
 import DeleteFavorite from "./DeleteFavorite";
 
 export default function FavoriteList() {
