@@ -26,8 +26,8 @@ export default function AddFavorite({ jobseekerId, jobPostingId }) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form className="ui form">
-         <Button type="submit" inverted color="red">FAVORİ EKLE</Button>
+        <Form>
+         <Button icon="heart" type="submit" inverted color="red"></Button>
         </Form>
       </Formik>
     </div>

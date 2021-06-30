@@ -8,6 +8,10 @@
   margin-bottom: 5em;
 }
 
+.ui.menu {
+  background-color: rgb(255, 111, 111);
+}
+
 .form {
   width: 550px;
   margin-left: auto;
@@ -30,7 +34,18 @@
   background-position: top left;
 }
 
-.fixed {
+.filters {
   width: 260px;
+  top: 110pt;
   position: fixed;
+  
+  
+}
+
+.fixedMenu {
+  position: fixed;
+  top: 54pt;
+  z-index: 1;
+  width: 100%;
+  
 }

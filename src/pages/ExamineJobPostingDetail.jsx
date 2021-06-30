@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import JobPostingService from "../services/jobPostingService";
 import { Button, Table, Header, Icon } from "semantic-ui-react";
-import BusinessIcon from "@material-ui/icons/Business";
-import DetailsIcon from "@material-ui/icons/Details";
 import { toast } from "react-toastify";
 
 export default function JobPostingDetail() {
@@ -32,7 +30,6 @@ export default function JobPostingDetail() {
     <div className="card">
       <Header as="h2" icon textAlign="center">
         <Header.Content>İŞ İLANI DETAYI</Header.Content>
-        <DetailsIcon></DetailsIcon>
       </Header>
       {jobPostings.map((jobPosting) => (
         <div>
@@ -45,7 +42,7 @@ export default function JobPostingDetail() {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <BusinessIcon /> Şirket
+                  Şirket
                 </Table.Cell>
                 <Table.Cell>{jobPosting.employer.companyName}</Table.Cell>
               </Table.Row>

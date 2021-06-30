@@ -24,55 +24,42 @@ export default function FavoriteList() {
       </Header>
       <Card.Group>
         {favorites.map((favorite) => (
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={13}>
-                <Card
-                  color="yellow"
-                  fluid
-                  as={NavLink}
-                  to={`/jobpostings/${favorite.jobPosting.jobPostingId}`}
-                >
-                  <Card.Content>
-                    {!favorite.jobPosting.employer.image ? (
-                      <Image
-                        rounded
-                        floated="left"
-                        size="tiny"
-                        src="https://aday-spage.mncdn.com/Knet_img_bag-with-gray-bg.832c700.svg?v=p0611211353224"
-                      ></Image>
-                    ) : (
-                      <Image
-                        rounded
-                        floated="left"
-                        size="tiny"
-                        src={favorite.jobPosting.employer.image.imageUrl}
-                      ></Image>
-                    )}
+          <Card color="yellow" fluid>
+            <Card.Header textAlign="right">
+              Favorilerden Çıkar
+              <DeleteFavorite favoriteId={favorite.favoriteId}></DeleteFavorite>
+            </Card.Header>
+            <Card.Content
+              as={NavLink}
+              to={`/jobpostings/${favorite.jobPosting.jobPostingId}`}
+            >
+              {!favorite.jobPosting.employer.image ? (
+                <Image
+                  rounded
+                  floated="left"
+                  size="tiny"
+                  src="https://aday-spage.mncdn.com/Knet_img_bag-with-gray-bg.832c700.svg?v=p0611211353224"
+                ></Image>
+              ) : (
+                <Image
+                  rounded
+                  floated="left"
+                  size="tiny"
+                  src={favorite.jobPosting.employer.image.imageUrl}
+                ></Image>
+              )}
 
-                    <Card.Header>
-                      {favorite.jobPosting.jobPosition.positionName}
-                    </Card.Header>
-                    <Card.Meta>
-                      {favorite.jobPosting.employer.companyName}
-                    </Card.Meta>
-                    <Card.Meta>
-                      {favorite.jobPosting.workTime.workTime}
-                    </Card.Meta>
-                    <Card.Description>
-                      <Icon name="map marker alternate" />
-                      {favorite.jobPosting.city.name}
-                    </Card.Description>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <DeleteFavorite
-                  favoriteId={favorite.favoriteId}
-                ></DeleteFavorite>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+              <Card.Header>
+                {favorite.jobPosting.jobPosition.positionName}
+              </Card.Header>
+              <Card.Meta>{favorite.jobPosting.employer.companyName}</Card.Meta>
+              <Card.Meta>{favorite.jobPosting.workTime.workTime}</Card.Meta>
+              <Card.Description>
+                <Icon name="map marker alternate" />
+                {favorite.jobPosting.city.name}
+              </Card.Description>
+            </Card.Content>
+          </Card>
         ))}
       </Card.Group>
     </div>

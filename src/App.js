@@ -38,28 +38,29 @@ function App() {
 
   const history = useHistory();
 
-  function handleSignInJobseeker() {
+  const handleSignInJobseeker = () => {
     setIsAuthenticatedJobseeker(true);
     history.push("/jobpostings");
   }
 
-  function handleSignOutJobseeker() {
+  const handleSignOutJobseeker = () => {
     setIsAuthenticatedJobseeker(false);
     history.push("/home");
   }
 
-  // function handleSignInSystemPersonnal() {
+  // const handleSignInSystemPersonnal = () => {
   //   setIsAuthenticatedSystemPersonnal(true);
   //   history.push("/jobpostings");
   // }
 
-  // function handleSignOutSystemPersonnal() {
+  // const handleSignOutSystemPersonnal = () => {
   //   setIsAuthenticatedSystemPersonnal(false);
   //   history.push("/home");
   // }
   return (
     <div className="app">
       <ToastContainer position="top-right" />
+      <Route exact path="/jobpostings" component={Dashboard}></Route>
       <Container className="main">
         {isAuthenticatedJobseeker ? (
           <SignedInJobseeker
@@ -141,7 +142,6 @@ function App() {
               ></LoginSystemPersonnal>
             )}
           ></Route>
-          <Route exact path="/jobpostings" component={Dashboard}></Route>
           <Route
             exact
             path="/jobpostings/add"

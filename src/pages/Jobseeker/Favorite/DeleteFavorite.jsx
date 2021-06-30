@@ -16,7 +16,7 @@ export default function DeleteFavorite({favoriteId}) {
   };
   return (
     <div>
-      <Button inverted color="red" onClick={()=>deleteFavorite(favoriteId)}>FAVORİDEN ÇIKAR</Button>
+      <Button icon="heart" inverted color="red" onClick={()=>deleteFavorite(favoriteId)}></Button>
     </div>
   );
 }

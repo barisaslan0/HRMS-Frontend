@@ -1,27 +1,56 @@
 import axios from "axios";
 
-export default class JobPostingService{
-    getByConfirmAndActiveTrue(pageNo,pageSize){
-        return axios.get("http://localhost:8080/api/jobpostings/getbyisconfirmandisactive?isActive=true&isConfirm=true&pageNo="+pageNo+"&pageSize="+pageSize)
-    }
+export default class JobPostingService {
+  getByFilter(jobPostingFilters, pageNo, pageSize) {
+    return axios.post(
+      "http://localhost:8080/api/jobpostings/getbyfilter?pageNo=" +
+        pageNo +
+        "&pageSize=" +
+        pageSize,
+      jobPostingFilters
+    );
+  }
 
-    getByConfirmFalse(){
-        return axios.get("http://localhost:8080/api/jobpostings/getbyisconfirm?isConfirm=false")
-    }
+  getByConfirmAndActiveTrue(pageNo, pageSize) {
+    return axios.get(
+      "http://localhost:8080/api/jobpostings/getbyisconfirmandisactive?isActive=true&isConfirm=true&pageNo=" +
+        pageNo +
+        "&pageSize=" +
+        pageSize
+    );
+  }
 
-    getByJobPostingIdAndConfirmFalse(jobPostingId){
-        return axios.get("http://localhost:8080/api/jobpostings/getbyisconfirmandjobpostingid?isConfirm=false&jobPostingId="+jobPostingId)
-    }
+  getByConfirmFalseAndActiveTrue(pageNo, pageSize) {
+    return axios.get(
+      "http://localhost:8080/api/jobpostings/getbyisconfirmandisactive?isActive=true&isConfirm=false&pageNo=" +
+        pageNo +
+        "&pageSize=" +
+        pageSize
+    );
+  }
 
-    getByJobPostingId(jobPostingId){
-        return axios.get("http://localhost:8080/api/jobpostings/getbyjobpostingid?jobPostingId="+jobPostingId)
-    }
+  getByJobPostingIdAndConfirmFalse(jobPostingId) {
+    return axios.get(
+      "http://localhost:8080/api/jobpostings/getbyisconfirmandjobpostingid?isConfirm=false&jobPostingId=" +
+        jobPostingId
+    );
+  }
 
-    add(values){
-        return axios.post("http://localhost:8080/api/jobpostings/add",values)
-    }
+  getByJobPostingId(jobPostingId) {
+    return axios.get(
+      "http://localhost:8080/api/jobpostings/getbyjobpostingid?jobPostingId=" +
+        jobPostingId
+    );
+  }
 
-    confirm(jobPostingId){
-        return axios.post("http://localhost:8080/api/jobpostings/updateisconfirm?isConfirm=true&jobPostingId="+jobPostingId)
-    }
+  add(values) {
+    return axios.post("http://localhost:8080/api/jobpostings/add", values);
+  }
+
+  confirm(jobPostingId) {
+    return axios.post(
+      "http://localhost:8080/api/jobpostings/updateisconfirm?isConfirm=true&jobPostingId=" +
+        jobPostingId
+    );
+  }
 }
